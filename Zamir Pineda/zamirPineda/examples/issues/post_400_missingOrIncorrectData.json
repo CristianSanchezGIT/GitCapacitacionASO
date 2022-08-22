@@ -1,0 +1,10 @@
+{
+  "messages": [
+    {
+      "code": "missingOrIncorrectData",
+      "message": "Missing or Incorrect data.",
+      "parameters": [],
+      "type": "Error"
+    }
+  ]
+}

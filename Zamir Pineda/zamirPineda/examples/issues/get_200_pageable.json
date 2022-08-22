@@ -1,0 +1,44 @@
+{
+  "data": {
+    "count": 1, 
+    "issues": [
+      {
+        "entityType": "11",
+        "entityCode": "18", 
+        "creationDate": "2020-02-28T16:41:41.090Z", 
+        "complaintCode": "11181118807587120", 
+        "countryCode": "170", 
+        "stateCode": "05", 
+        "cityCode": "05004", 
+        "clientName": "cf807587120", 
+        "documentType": "1",  
+        "documentNumber": "807587120", 
+        "phone": "3211111111", 
+        "email": "12344@email.com", 
+        "personType": "1",  
+        "gender": "1", 
+        "lgbtiqCommunity": "2", 
+        "sourceSystem": "3",
+        "productCode": "113",  
+        "productName": "móvil", 
+        "reason": "116",  
+        "complaintDescription": "text complaint", 
+        "hasAnnex": true,  
+        "controlEntity": "1", 
+        "expressComplaint": "2"
+      }
+    ]
+  },
+  "pagination": {
+      "links": {
+        "first": "https://www.bbvaapis.com/smart-supervision/v0/issues",
+        "last": "https://www.bbvaapis.com/smart-supervision/v0/issues?paginationKey=gdfw254sf",
+        "previous": "https://www.bbvaapis.com/smart-supervision/v0/issues?paginationKey=dwer342sf",
+        "next": "https://www.bbvaapis.com/smart-supervision/v0/issues?paginationKey=qazx687sf"
+      },
+    "page": 1,
+    "totalPages": 3,
+    "totalElements": 6,
+    "pageSize": 2
+    }
+}

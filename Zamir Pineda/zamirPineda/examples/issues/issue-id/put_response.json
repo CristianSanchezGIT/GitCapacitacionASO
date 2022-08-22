@@ -1,0 +1,27 @@
+{
+  "data":{
+    "companyId":"0013",
+    "gender":"2",
+    "lgbtiqCommunity":"2",
+    "specialCondition":"98",
+    "sourceSystem":"13",
+    "productCode":"101",
+    "reason":"212",
+    "statusCode":"2",
+    "updateDate":"2020-02-28T16:41:41.090Z",
+    "digitalProduct":"1",
+    "inFavorOf":"2",
+    "acceptance":"1",
+    "rectification":"1",
+    "withdrawalComplaint":"1",
+    "prorogation":"2",
+    "admission":"1",
+    "hasFinalDocuments":false,
+    "hasAnnex":false,
+    "closeDate":"2020-02-28T16:41:41.090Z",
+    "tutelageProcessesNumber":"1",
+    "controlEntity":"99",
+    "dialing":"2",
+    "expressComplaint":"1"
+  }
+}
