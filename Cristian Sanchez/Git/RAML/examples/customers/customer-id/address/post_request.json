@@ -1,0 +1,26 @@
+{
+  "streetName": "",
+  "streetNumber": "65",
+  "additionalDescription": "",
+  "ordinalFirst": "",
+  "bisFirst": "",
+  "cardinalFirst": "",
+  "badgeFirst": "52",
+  "ordinalSecond": "",
+  "bisSecond": "",
+  "cardinalSecond": "",
+  "badgeSecond": "98",
+  "type": {
+    "id": "CASA",
+    "description": ""
+  },
+  "streetType": {
+    "id": "CALLE",
+    "description": ""
+  },
+  "geographicalLocation": {
+    "country": "Colombia",
+    "state": "Bogotá D. C.",
+    "city": "Bogotá D. C."
+  }
+}

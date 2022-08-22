@@ -1,0 +1,345 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+	address:
+		type:object
+		properties:
+			id:
+				(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "NONE"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "NONE"
+	        	output: "REQUIRED"
+		    type: String
+		    description: |
+		     	Identificador de la dirección.
+		  
+		  type:
+		  	(annotations.bindingDefinition):
+		  		- method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+	      type: Object
+	      description: |
+	      	Tipo de dirección
+	      properties:
+	      	id:
+	      		(annotations.bindingDefinition):
+		      		- method: "GET"
+		        		input: "NONE"
+		       	 		output: "REQUIRED"
+		     			- method: "POST"
+		        		input: "NONE"
+		        		output: "REQUIRED"
+	        		- method: "PATCH"
+	        			input: "NONE"
+	        			output: "REQUIRED"
+		    		type: String
+		    		enum: [CASA, OFICINA]
+		    		(annotations.enumDescription):
+              - CASA: Dirección de la casa.
+              - OFICINA: Dirección de la oficina.
+		   			description: |
+		     			Identificador del tipo de dirección del cliente.
+	      	description:
+	      		(annotations.bindingDefinition):
+				  		- method: "GET"
+				        input: "NONE"
+				        output: "OPTIONAL"
+				      - method: "POST"
+				        input: "OPTIONAL"
+				        output: "OPTIONAL"
+			        - method: "PATCH"
+			        	input: "OPTIONAL"
+			        	output: "OPTIONAL"
+			      type: String
+			      description: |
+			      	Descripción del tipo de dirección.
+
+			streetType:
+		  	(annotations.bindingDefinition):
+		  		- method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+	      type: Object
+	      description: |
+	      	Tipo de Calle de la dirección
+	      properties:
+	      	id:
+	      		(annotations.bindingDefinition):
+		      		- method: "GET"
+		        		input: "NONE"
+		       	 		output: "REQUIRED"
+		     			- method: "POST"
+		        		input: "NONE"
+		        		output: "REQUIRED"
+	        		- method: "PATCH"
+	        			input: "NONE"
+	        			output: "REQUIRED"
+		    		type: String
+		    		enum: [CALLE, CARRERA, DIAGONAL, TRANSVERSAL]
+		    		(annotations.enumDescription):
+              - CALLE: Vías que conectan Oriente - Occidente.
+              - CARRERA: Vías que conectan Norte - Sur.
+              - DIAGONAL: Vía que corta de manera oblicua a otras calles que son paralelas entre sí.
+              - TRANVERSAL: Vía que corta de manera oblicua a otras carreras que son paralelas entre sí.
+		   			description: |
+		     			Identificador del tipo de calle de la dirección del cliente.
+	      	description:
+	      		(annotations.bindingDefinition):
+				  		- method: "GET"
+				        input: "NONE"
+				        output: "OPTIONAL"
+				      - method: "POST"
+				        input: "OPTIONAL"
+				        output: "OPTIONAL"
+			        - method: "PATCH"
+			        	input: "OPTIONAL"
+			        	output: "OPTIONAL"
+			      type: String
+			      description: |
+			      	Descripción del tipo de dirección
+
+			streetName:
+				(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "OPTIONAL"
+		      - method: "POST"
+		        input: "OPTIONAL"
+		        output: "OPTIONAL"
+	        - method: "PATCH"
+	        	input: "OPTIONAL"
+	        	output: "OPTIONAL"
+		    type: String
+		    description: |
+		     	Nombre de la vía asociada a la dirección.
+
+		  streetNumber:
+				(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+		    type: String
+		    description: |
+		     	Número de la vía asociada a la dirección.
+
+		  additionalDescription:
+				(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "OPTIONAL"
+		      - method: "POST"
+		        input: "OPTIONAL"
+		        output: "OPTIONAL"
+	        - method: "PATCH"
+	        	input: "OPTIONAL"
+	        	output: "OPTIONAL"
+		    type: String
+		    description: |
+		     	Datos adicionales de la dirección.
+
+		  ordinalFirst:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "OPTIONAL"
+		      - method: "POST"
+		        input: "OPTIONAL"
+		        output: "OPTIONAL"
+	        - method: "PATCH"
+	        	input: "OPTIONAL"
+	        	output: "OPTIONAL"
+		    type: String
+		    description: |
+		     	Referencia el ordinal de la dirección.
+
+		  bisFirst:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+		    type: Boolean
+		    description: |
+		     	Referencia si la placa es bis.
+
+		  cardinalFirst:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "OPTIONAL"
+		      - method: "POST"
+		        input: "OPTIONAL"
+		        output: "OPTIONAL"
+	        - method: "PATCH"
+	        	input: "OPTIONAL"
+	        	output: "OPTIONAL"
+		    type: String
+		    description: |
+		     	Referencia la cardinalidad de la placa
+
+		  numberBadgeFirst:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+		    type: String
+		    description: |
+		     	Referencia el número de la placa.
+
+		  ordinalSecond:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "OPTIONAL"
+		      - method: "POST"
+		        input: "OPTIONAL"
+		        output: "OPTIONAL"
+	        - method: "PATCH"
+	        	input: "OPTIONAL"
+	        	output: "OPTIONAL"
+		    type: String
+		    description: |
+		     	Referencia el ordinal de la dirección.
+
+		  bisSecond:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+		    type: Boolean
+		    description: |
+		     	Referencia si la placa es bis.
+
+		  cardinalSecond:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "OPTIONAL"
+		      - method: "POST"
+		        input: "OPTIONAL"
+		        output: "OPTIONAL"
+	        - method: "PATCH"
+	        	input: "OPTIONAL"
+	        	output: "OPTIONAL"
+		    type: String
+		    description: |
+		     	Referencia la cardinalidad de la placa
+
+		  numberBadgeSecond:
+		  	(annotations.bindingDefinition):
+		      - method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+		    type: String
+		    description: |
+		     	Referencia el número de la placa.		  
+
+		  geographicalLocation:
+		  	(annotations.bindingDefinition):
+		  		- method: "GET"
+		        input: "NONE"
+		        output: "REQUIRED"
+		      - method: "POST"
+		        input: "REQUIRED"
+		        output: "REQUIRED"
+	        - method: "PATCH"
+	        	input: "REQUIRED"
+	        	output: "REQUIRED"
+	      type: Object
+	      description: |
+	      	Referencia la ubicación geográfica de la dirección
+	      properties:
+	      	country:
+	      		(annotations.bindingDefinition):
+		      		- method: "GET"
+		        		input: "NONE"
+		       	 		output: "REQUIRED"
+		     			- method: "POST"
+		        		input: "REQUIRED"
+		        		output: "REQUIRED"
+	        		- method: "PATCH"
+	        			input: "REQUIRED"
+	        			output: "REQUIRED"
+		    		type: String
+		   			description: |
+		     			País de la dirección.
+
+	      	state:
+	      		(annotations.bindingDefinition):
+				  		- method: "GET"
+				        input: "NONE"
+				        output: "REQUIRED"
+				      - method: "POST"
+				        input: "REQUIRED"
+				        output: "REQUIRED"
+			        - method: "PATCH"
+			        	input: "REQUIRED"
+			        	output: "REQUIRED"
+			      type: String
+			      description: |
+			      	Departamento de la dirección
+
+			    city:
+	      		(annotations.bindingDefinition):
+				  		- method: "GET"
+				        input: "NONE"
+				        output: "REQUIRED"
+				      - method: "POST"
+				        input: "REQUIRED"
+				        output: "REQUIRED"
+			        - method: "PATCH"
+			        	input: "REQUIRED"
+			        	output: "REQUIRED"
+			      type: String
+			      description: |
+			      	Ciudad de la dirección
