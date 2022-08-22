@@ -1,0 +1,34 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  subarea: subarea.raml
+
+types:
+  area:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Area identifier. Descriptor of which service is being provided and which product is affected.
+        required: false
+      subarea: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: subarea.subarea
+        description: |
+          Identifies specifics for what was provided by Business Relation Services Support Rep. A subarea depends on the area.
+        required: true
+

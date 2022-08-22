@@ -1,0 +1,10 @@
+{
+  "messages": [
+    
+    {
+      "code": "atLeastContactEmailIsRequired",
+      "message": "At least one contact email is required",
+      "type": "ERROR"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  issueType: issueType.raml
+  ranking: ranking.raml
+
+types:
+  issueTopic:
+    type: object
+    properties:
+      issueType:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+        type: issueType.issueType
+        description: |
+          It contains the different types of claims and complaints that can be established.
+        required: false
+      specificSubject:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+        type: string
+        description: |
+          Specific issue subject of the case, that the customer report.
+        required: false
+      tooltip:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+        type: string
+        description: |
+          Help text indicating procedures to follow.
+        required: false
+      ranking:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+        type: ranking.ranking
+        description: |
+          Ranking number that measures the frequency with which a specific type of claim occurs.
+        required: false

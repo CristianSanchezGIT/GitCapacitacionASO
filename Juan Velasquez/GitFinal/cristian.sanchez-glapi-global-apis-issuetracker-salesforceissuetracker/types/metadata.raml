@@ -1,0 +1,119 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  businessCodes: businessCodes.raml
+  documentInfo: documentInfo.raml
+  lastChange: lastChange.raml
+  contentInfo: contentInfo.raml
+  categorization: categorization.raml
+  originInfo: originInfo.raml
+  securityLevelInfo: securityLevelInfo.raml
+  preservationInfo: preservationInfo.raml
+  geolocation: geolocation.raml
+  functional: functional.raml
+  internal: internal.raml
+  external: external.raml
+
+types:
+  metadata:
+    type: object
+    properties:
+      businessCodes:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: businessCodes.businessCodes
+        description: |
+          This metadata group contains generic information about a document.
+        required: false
+      documentInfo:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: documentInfo.documentInfo
+        description: |
+          This metadata group contains generic information about a document.
+        required: false
+      lastChange:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: lastChange.lastChange
+        description: |
+          This metadata group contains generic information about change.
+        required: false
+      contentInfo:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: contentInfo.contentInfo
+        description: |
+          This metadata group contains information about the content of a document.
+        required: false
+      categorization:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: categorization.categorization
+        description: |
+          This metadata group contains information about the document type and its taxonomy.
+        required: false
+      originInfo:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: originInfo.originInfo
+        description: |
+          This metadata group contains origin information.
+        required: false
+      securityLevelInfo:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: securityLevelInfo.securityLevelInfo
+        description: |
+          This metadata group contains information about the security applied to a document.
+        required: false
+      preservationInfo:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: preservationInfo.preservationInfo
+        description: |
+          This metadata group contains information about how a document is preserved physically.
+        required: false
+      geolocation:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: geolocation.geolocation
+        description: |
+          This metadata group contains information about the coordenates from where the document has been uploaded.
+        required: false
+      functional:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: functional.functional
+        description: |
+          A metadata group related to functional id. This metadata is used to make versions.
+        required: false
+      binaryInfo:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: internal.internal | external.external
+        description: |
+          Document's binary info.
+        required: false

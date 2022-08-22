@@ -1,0 +1,77 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  numberType: numberType.raml
+  product: product.raml
+  transaction: transaction.raml
+
+types:
+  contract:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        description: |
+          Identifier of the contract.
+        required: false
+      number:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Contract Number Associated to a customer.
+        required: false
+      numberType: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: numberType.numberType
+        description: |
+          Objects that informs the type of contract number associated to a customer.
+        required: false
+      product: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: product.product
+        description: |
+          Contract Number Associated to a customer.
+        required: false
+      transaction: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: transaction.transaction[]
+        description: |
+          Transaction associated at the product implicated in a specific case.
+        required: false
+

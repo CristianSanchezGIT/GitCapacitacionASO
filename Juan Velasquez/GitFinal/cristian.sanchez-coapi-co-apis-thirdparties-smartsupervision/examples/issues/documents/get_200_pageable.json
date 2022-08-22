@@ -1,0 +1,40 @@
+{
+  "data": {
+    "count": 10, 
+    "responseDocuments": [
+      {
+        "complaintCode": "121637191320458543",
+        "type": "pdf", 
+        "fileLink": "https://storage.googleapis.com/scanned-sfc-smartsupervision-dev/1216320458543", 
+        "status": 2, 
+        "id": "3"
+      }, 
+      {
+        "complaintCode": "121637191320458543",
+        "type": "pdf", 
+        "fileLink": "https://storage.googleapis.com/unscanned-sfc-smartsupervision-dev/1216371543", 
+        "status": 1, 
+        "id": "7"
+      }, 
+      {
+        "complaintCode": "12163719132045843",
+        "type": "pdf", 
+        "fileLink": "https://storage.googleapis.com/unscanned-sfc-smartsupervision-dev/12163719132", 
+        "status": 1, 
+        "id": "8"
+      }
+    ]
+  },
+  "pagination": {
+      "links": {
+        "first": "https://www.bbvaapis.com/smart-supervision/v0/issues/documents-management",
+        "last": "https://www.bbvaapis.com/smart-supervision/v0/issues/documents-management?paginationKey=gdfw254sf",
+        "previous": "https://www.bbvaapis.com/smart-supervision/v0/issues/documents-management?paginationKey=dwer342sf",
+        "next": "https://www.bbvaapis.com/smart-supervision/v0/issues/documents-management?paginationKey=qazx687sf"
+      },
+    "page": 1,
+    "totalPages": 3,
+    "totalElements": 6,
+    "pageSize": 2
+    }
+}

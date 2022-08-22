@@ -1,0 +1,70 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  link : link.raml
+
+types:
+  attachment:
+    type: object
+    properties:
+      name: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "PATCH"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        description: |
+          Document name.
+        required: false
+      size: 
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        (annotations.supportedIn):
+          - country: "CO"
+            method: "POST"
+        type: string
+        description: |
+          File size.
+        required: false
+      createdDate: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: datetime
+        description: |
+          String based on ISO 8601 for specifying the creation date of the document.
+        required: false
+      link: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "PATCH"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: link.link
+        description: |
+          Locator or physical location of the document attached by the client or response  document of the case. It can be used to download and view the generated response document before the sign it.
+        required: true
+
+

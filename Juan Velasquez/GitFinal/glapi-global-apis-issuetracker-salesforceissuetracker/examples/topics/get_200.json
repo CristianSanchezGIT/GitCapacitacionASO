@@ -1,0 +1,99 @@
+{
+  "data": [
+    {
+      "id": "a0M9E00000RDsvgUAD",
+      "description": "Son peticiones realizadas por el Cliente en su producto Cuenta Corriente referente a Datáfono con relación a la Transacciones no reconocidas - Cambiazo",
+      "requireMovements": true,
+      "keywords": [
+        {
+          "value": "billete"
+        },
+        {
+          "value": "cuenta"
+        },
+        {
+          "value": "crédito"
+        }
+      ],
+      "forms": [
+        {
+          "id": "a0S9E0000045UoCUAU",
+          "formType": "02",
+          "question": "¿Durante la realización de las transacciones objetadas, tuvo inconvenientes en el servicio de su línea celular?"
+        },
+        {
+          "id": "a0S9E0000045UoCUAU",
+          "formType": "03",
+          "question": "¿Qué persona o personas manejan o tienen la clave de transacciones y operaciones a su canal para internet, móvil, cajeros, y/o Call center?"
+        }
+      ],
+      "attachments": [
+        {
+          "id": "idDelDocument",
+          "name": "nombre del documento 1"
+        },
+        {
+          "id": "idDelDocumento",
+          "name": "Nombre del documento 2"
+        }
+      ],
+      "issue": {
+        "specificSubject": "Double Load Transaction in dataphone",
+        "tooltip": "Antes de radicar, válida: Si fue aplicado erróneamente un depósito a un producto diferente al que el cliente dice haber solicitado; una vez hayas realizado las gestiones propias de la oficina (contacto con los clientes afectados), apóyate con el área jurídica a través de Pregúntale a D.G.",
+        "ranking": {
+          "value": 7
+        },
+        "issueType": {
+          "id": "DATAPHONE"
+        }
+      }
+    },
+    {
+      "id": "a0M9E00000RDsxrUAD",
+      "description": "Son peticiones realizadas por el Cliente en su producto Cuenta Corriente referente a Internet con relación a la Transacciones no reconocidas en BBVA NET.",
+      "requireMovements": false,
+      "keywords": [
+        {
+          "value": "billete"
+        },
+        {
+          "value": "cuenta"
+        },
+        {
+          "value": "oficina"
+        }
+      ],
+      "forms": [
+        {
+          "id": "a0S9E0000045UoCUAU",
+          "formType": "03",
+          "question": "¿Durante la realización de las transacciones objetadas, tuvo inconvenientes en el servicio de su línea celular?"
+        },
+        {
+          "id": "a0S9E0000045UoCUAU",
+          "formType": "03",
+          "question": "¿Qué persona o personas manejan o tienen la clave de transacciones y operaciones a su canal para internet, móvil, cajeros, y/o Call center?"
+        }
+      ],
+      "attachments": [
+        {
+          "id": "idDelDocument",
+          "name": "nombre del documento 1"
+        },
+        {
+          "id": "idDelDocumento",
+          "name": "Nombre del documento 2"
+        }
+      ],
+      "issue": {
+        "issueType": {
+          "id": "INTERNET"
+        },
+        "specificSubject": "Transactions not recognized in BBVA Net",
+        "ranking": {
+          "value": 7
+        }
+      }
+    }
+  ]
+}

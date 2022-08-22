@@ -1,0 +1,350 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  issues:
+    type: object
+    properties:
+      companyId:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Company's identifier to consult and access to the superfinanciera of Colombia information.
+        required: false
+      entityType:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Type of entity that is assigned by the Superfinanciera of Colombia.
+        required: false
+      entityCode:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Code of the entity that is assigned by the Superfinanciera of Colombia.
+        required: false
+      creationDate:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: datetime
+        description: |
+          Date of complaint creation.
+        required: false 
+      complaintCode:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Entity complaint identifier.
+        required: false 
+      countryCode:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Country where the incident happened.
+        required: false 
+      stateCode:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          State where the incident happened.
+        required: false 
+      cityCode:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          City where the incident happened.
+        required: false
+      clientName:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Name of the person or company.
+        required: false
+      documentType:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          It means the identification kind of financial consumer.
+        required: false 
+      documentNumber:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          It means the identification number of financial consumer.
+        required: false
+      phone:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Number Phone of financial consumer.
+        required: false
+      email:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Email of financial consumer.
+        required: false 
+      personType:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Code of kind of people who complained.
+        required: false 
+      gender:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Gender id of financial consumer regarding to the gender coding.
+        required: false
+      lgbtiqCommunity:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          It means if the user comes from lgbti community the id is 1, if he doesn't come from lgbti, the id is 2.
+        required: false
+      sourceSystem:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Channel id across to complain regarding with the coding published by the Superfinanciera de Colombia.
+        required: false
+      specialCondition:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Special conditions id  regarding   Superfinanciera of Colombia information.
+        required: false
+      productCode:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Product id that generate the complaint  regarding with the coding "Products" published by the Superfinanciera of Colombia.
+        required: false
+      productName:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Product description given by the financial consumer, when he determines.
+        required: false
+      reason:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Reason is that generate the complaint , regarding the coding of the general reasons or complaints published by the  Superfinanciera of Colombia.
+        required: false
+      complaintDescription:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Text joined with the complaint.
+        required: false
+      hasAnnex:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: boolean
+        description: |
+          It means if the complaint has annexes or not. Allowed values 1 = SI; 2=NO.
+        required: false
+      tutelageProcessesNumber:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Counter regarding if the complaint has tutelage processes.
+        required: false
+      controlEntity:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          It means the entity control id that requests a management report of the complaint regarding the control entities coding  published by the Superfinanciera of Colombia.
+        required: false
+      consumerDefenderEscalation:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          The value will be 1 when a financial consumer  decides to escalate his complaint  to the financial consumer defender, by the other way it will be 2.
+        required: false
+      replica:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          If the complaint mean a replica  by the financial consumer or the entity the value is 1, and by the other way is 2.
+        required: false
+      replicaArgument:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          When he request a replica, the argument saved to light at the financial consumer.
+        required: false
+      withdrawalComplaint:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Withdrawal id given by the financial consumer  regarding  the withdrawal coding published by the Superfinanciera of Colombia.
+        required: false
+      expressComplaint:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          If the complaint is express the value is 1, and by the other way is 2.
+        required: false
+      receptionInstance:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          This is the reception instance code given by the financial consumer, regarding the coding published by the Superfinanciera of Colombia.
+        required: false
+      receptionPoint:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          This is the reception point code given by the financial consumer, regarding the coding published by the Superfinanciera of Colombia.
+        required: false
+      admission:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          This is the admission code given by the complaint interposed by the financial consumer defender regarding the admission code published by the Superfinanciera of Colombia.
+        required: false

@@ -1,0 +1,12 @@
+{
+  "messages": [
+    {
+      "code": "invalidParameters",
+      "message": "Invalid parameters",
+      "type": "ERROR",
+      "parameters":[{
+        "name": "financialManagementCompanyId"
+      }]
+    }
+  ]
+}

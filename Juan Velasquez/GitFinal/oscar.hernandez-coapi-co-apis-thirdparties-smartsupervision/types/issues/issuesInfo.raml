@@ -1,0 +1,27 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  issues: issues.raml
+
+types:
+  issuesInfo:
+    type: object
+    properties:
+      count:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "REQUIRED"
+        type: number
+        description: |
+          Number of consulted cases.
+        required: false
+      issues:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: issues.issues[]
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false

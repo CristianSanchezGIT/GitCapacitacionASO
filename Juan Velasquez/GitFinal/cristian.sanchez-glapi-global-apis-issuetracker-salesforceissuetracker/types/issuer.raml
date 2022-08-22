@@ -1,0 +1,84 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  contactDetails: contactDetails.raml
+  location: location.raml
+  gender: gender.raml
+  specialCondition: specialCondition.raml
+types:
+  issuer:
+    type: object
+    properties:
+      fullName:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        description: |
+            Name of the customer.
+        required: false
+      contactDetails:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: contactDetails.contactDetails[]
+        description: |
+          Contact details.
+        required: false
+      location:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: location.location
+        description: |
+          Physical location address.
+        required: false
+      gender:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: gender.gender
+        description: |
+          Gender id of financial consumer regarding the gender coding.
+        required: false
+      lgbtiqCommunity:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        (annotations.supportedIn):
+          - country: "CO"
+            method: "POST"
+        type: string
+        enum: ["LGBTI", "NOT_LGBTI", "NOT_APPLY"]
+        (annotations.enumDescription):
+          - LGBTI: If the comes from lgbti.
+          - NOT_LGBTI: Doesn’t come from lgbti.
+          - NOT_APPLY: The option doesn’t apply.
+        description: |
+          Identifier if you belong to the lgtbi community.
+        required: false
+      specialCondition:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: specialCondition.specialCondition
+        description: |
+          Special condition of the person, for example, it could be  old man, or it could disabled people.
+        required: false

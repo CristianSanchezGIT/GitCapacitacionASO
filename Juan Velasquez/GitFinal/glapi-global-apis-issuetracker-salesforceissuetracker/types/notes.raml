@@ -1,0 +1,20 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  notes:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string[]
+        description: |
+          The list of comments associated with a Case
+        required: false

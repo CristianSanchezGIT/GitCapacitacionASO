@@ -1,0 +1,27 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  documents: documents.raml
+  
+types:
+  documentsInfo:
+    type: object
+    properties:
+      count:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "REQUIRED"
+        type: number
+        description: |
+          Number of documents consulted.
+        required: false
+      responseDocuments:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "REQUIRED"
+        type: documents.documents[]
+        description: |
+          List of documents related to the complaint.
+        required: false

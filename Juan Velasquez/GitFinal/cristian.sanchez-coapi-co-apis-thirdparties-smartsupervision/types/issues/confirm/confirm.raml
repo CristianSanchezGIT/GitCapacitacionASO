@@ -1,0 +1,35 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  confirm:
+    type: object
+    properties:
+      companyId:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "NONE"
+        type: string
+        description: |
+          Company's identifier to consult and access to the superfinanciera of Colombia information.
+        required: false
+      complaints:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "OPTIONAL"
+        type: string[]
+        description: |
+          List with the codes of the complaints to confirm the saving.
+        required: false
+      message:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Answer message of accepted PQRs
+        required: false

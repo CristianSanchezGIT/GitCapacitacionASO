@@ -1,0 +1,27 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  productType:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        enum: ["ACCOUNT", "CARD", "LOAN", "DEPOSIT"]
+        (annotations.enumDescription):
+          - ACCOUNT: Indicates that the product is an account.
+          - CARD: Indicates that the product is a Card.
+          - LOAN: Indicates that the product is a Loan.
+          - DEPOSIT: Indicates that the product is a Deposit.
+        description: |
+          Product type identifier.
+        required: true
+

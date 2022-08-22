@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  questionType:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Question type identifier.
+        required: false
+      description:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Statement of the question type.
+        required: false

@@ -1,0 +1,17 @@
+#%RAML 1.0 Library
+uses:
+  annotations:  ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  ranking:
+    type: object
+    properties:
+      value:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+        type: number
+        description: |
+          Value of the frequency level of the claim.
+        required: false

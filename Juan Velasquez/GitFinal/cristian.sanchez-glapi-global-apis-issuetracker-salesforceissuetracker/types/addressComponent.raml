@@ -1,0 +1,57 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  addressComponent:
+    type: object
+    properties:
+      componentTypes:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string[]
+        description: |
+          This array indicates the type of the returned result. It contains a set of zero or more tags identifying the type of feature returned in the result. For example, the city of "Madrid" may return COMMUNITY which indicates that "Madrid" is an autonomous community, and also ADMINISTRATIVE_AREA_LEVEL_2 which indicates a second-level political subdivision, and POLITICAL since it is a political entity.
+        required: true
+      code: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          An abbreviated textual name for the address component. For example, an address component for Spain, may have a longName of "Spain", and a shortName of ES, using the ISO-3166-1 2-digit code.
+        required: false
+      name: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          The full text description or name of the address component.
+        required: false
+      additionalInformation: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Additional information of the location.
+        required: false
+

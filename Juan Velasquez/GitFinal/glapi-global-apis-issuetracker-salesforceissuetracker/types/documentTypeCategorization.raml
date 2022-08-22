@@ -1,0 +1,17 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  documentTypeCategorization:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Type of document (final level in the taxonomy).
+        required: false

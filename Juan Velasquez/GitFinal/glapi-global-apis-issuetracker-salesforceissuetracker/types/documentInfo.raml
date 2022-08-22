@@ -1,0 +1,98 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  template: template.raml
+types:
+  documentInfo:
+    type: object
+    properties:
+      objectName:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Name of the document (in case not being filled, value will be the same as folder code).
+        required: false
+      inceptionDate:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: datetime
+        description: |
+          Date that the document is uploaded to the system (timestamp).
+        required: false
+      creationUser:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          User code registered into the system.
+        required: false
+      creationDate:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: datetime
+        description: |
+          Date of creation of the document.
+        required: false
+      author:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Entity or person that has created (or generate) the original document.
+        required: false
+      owner:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Person who document belongs to (client, bank..).
+        required: false
+      responsible:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Responsible for the document. It can be an area, an organizational unit.
+        required: false
+      comments:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Document comments.
+        required: false
+      language:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Language of the document.
+        required: false
+      template:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: template.template
+        description: |
+          Versión del documento (N / A Core Banking).
+        required: false

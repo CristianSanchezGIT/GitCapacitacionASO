@@ -1,0 +1,44 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  document:
+    type: object
+    properties:
+      companyId:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "NONE"
+        type: string
+        description: |
+          Company's identifier to consult and access to the superfinanciera of Colombia information.
+        required: false
+      file:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "NONE"
+        type: file
+        description: |
+          File to upload.
+        required: false
+      type:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          File type or file extension.
+        required: false
+      complaintCode:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input:  "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Corresponding complaint code that is being consulted.
+        required: false

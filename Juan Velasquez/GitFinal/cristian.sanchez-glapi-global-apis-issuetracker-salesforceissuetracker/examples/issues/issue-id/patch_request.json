@@ -1,0 +1,40 @@
+{
+  "specificSubject": "theft",
+  "form": {
+    "id": "A123432",
+    "name": "theft"
+  },
+  "contract": {
+    "transaction": [
+      {
+        "id" : "1234",
+        "localAmount": {
+          "amount": 30000,
+          "currency": "COP"
+        },
+        "channel": {
+          "id": "1234532",
+          "name": "ATM"
+        }
+      },
+      {
+        "id" : "4567",
+        "localAmount": {
+          "amount": 30000,
+          "currency": "COP"
+        },
+        "channel": {
+          "id": "234567",
+          "name": "Movil"
+        }
+      }
+    ]
+  },
+  "attachments": [{
+    "name": "Cédula de Ciudadanía",
+    "link": {
+      "rel": "document",
+      "href": "https://response.com"
+    }
+  }]
+}

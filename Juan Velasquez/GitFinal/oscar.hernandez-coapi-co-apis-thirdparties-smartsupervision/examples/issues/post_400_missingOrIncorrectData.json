@@ -1,0 +1,15 @@
+{
+  "status_code": 400, 
+  "messages": {
+    "codigo_pais": [
+      "This field is required."
+    ], 
+    "departamento_codigo": [
+      "This field is required."
+    ], 
+    "municipio_codigo": [
+      "This field is required."
+    ]
+  }, 
+  "detail": "Error APIException"
+}
