@@ -1,0 +1,54 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  identityDocuments: identityDocuments.raml
+  occupationType: occupationType.raml
+
+types:
+  nonCustomer:
+    type: object
+    description: |
+      Object information related to a noncustomer.
+    properties:
+      claimantType:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        enum: ["CUSTOMER","NONCUSTOMER"]
+        (annotations.enumDescription):
+          - CUSTOMER: It refers when the claimant is a customer.
+          - NONCUSTOMER: It refers when the claimant is a non customer.
+        description: |
+          Claimant Type.
+        required: false
+      identityDocuments:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: identityDocuments.identityDocuments[]
+        description: |
+          List of identity document information related to the non customer.
+        required: false
+      occupationType:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: occupationType.occupationType
+        description: |
+          Current occupation of the customer. Required if the customer is self employed.
+        required: false

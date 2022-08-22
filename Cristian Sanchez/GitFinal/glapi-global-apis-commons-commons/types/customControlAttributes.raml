@@ -1,0 +1,72 @@
+#%RAML 1.0 Library
+
+uses:
+  annotations: ../annotations/annotationsLibrary.raml
+
+types:
+  customControlAttributes:
+    type: object
+    discriminator: kind
+    properties:
+      kind:
+        required: true
+        type: string
+        enum: [CUSTOMER_ACCESS_CONTROL, CONTRACT_ACCESS_CONTROL, USER_CHANNEL_CONTROL, CONTRACT_CHANNEL_CONTROL, AMOUNT_CHANNEL_CONTROL, AUDITABLE_DATA, MASK_AND_UNMASK, ENCRYPTION_AND_DECRYPTION]
+        description: Kind of the validation.
+        (annotations.bindingDefinition): []
+        (annotations.enumDescription):
+          - CUSTOMER_ACCESS_CONTROL: Ensure that the specified customer can only access the resources to which he has permissions.
+          - CONTRACT_ACCESS_CONTROL: Ensure that the specified customer can only access the contracts to which he has permissions.
+          - USER_CHANNEL_CONTROL: To customize the visualization, operative, limits, permissions, etc. that user will have about the resource based on the channel he is using.
+          - CONTRACT_CHANNEL_CONTROL: To customize the visualization, operative, limits, permissions, etc. of the contracts that a customer will have on the resource based on the channel he is using.
+          - AMOUNT_CHANNEL_CONTROL: To customize the limits, permissions, etc. of the amounts of the contracts that a customer will have on the resource based on the channel he is using.
+          - AUDITABLE_DATA: To mark certain attributes so that its information is shown in plain text for the input/output, but internally obfuscated in audit logs.
+          - MASK_AND_UNMASK: To ensure that a customer operates with the mask identifiers that correspond to their contracts (combination of the identifier of that resource and that of the contract customer).
+          - ENCRYPTION_AND_DECRYPTION: Allows an attribute to be internally to be encrypted and decrypted (as appropriate) so that the information arrives at the message recipient in the appropriate form (encrypted or decrypted), allowing them to operate without worrying about whether it was sent under encryption or if it has to be decrypted.
+      country:
+        (annotations.bindingDefinition): []
+        type: string
+        enum: [ES, MX, PE, CO, US, AR, VE, UY, PY, TR, GL, ML]
+        (annotations.enumDescription):
+          - ES: Spain.
+          - MX: Mexico.
+          - PE: Peru.
+          - CO: Colombia.
+          - US: United States of America.
+          - AR: Argentina.
+          - VE: Venezuela.
+          - UY: Uruguay.
+          - PY: Paraguay.
+          - TR: Turkey.          
+          - GL: Global.
+          - ML: Multilocal.
+        required: true
+        description: Country specified with the ISO 3166-1 alpha-2 two letters code.
+        pattern: ^[A-Z]{2}$
+        example: ES
+      method:
+        type: string
+        required: false
+        description: Define which method the annotation applies.
+        enum: [GET, PATCH, POST, PUT, DELETE, HEAD, ALL]
+        default: ALL
+        (annotations.bindingDefinition): []
+        (annotations.enumDescription):
+          - GET : Applies for GET.
+          - PATCH : Applies for PATCH.
+          - POST: Applies for POST.
+          - PUT: Applies for PUT.
+          - DELETE: Applies for DELETE.
+          - HEAD: Applies for HEAD.
+          - ALL: Applies for all methods.
+      payload:
+        type: string
+        required: false
+        description: Property exception for request, response or both.        
+        enum: [ REQUEST, RESPONSE, BOTH ]
+        default: BOTH
+        (annotations.bindingDefinition): []
+        (annotations.enumDescription):
+          - REQUEST : Applies only in Request payload.
+          - RESPONSE : Applies only in Request payload.
+          - BOTH : Applies both, request and response payload.

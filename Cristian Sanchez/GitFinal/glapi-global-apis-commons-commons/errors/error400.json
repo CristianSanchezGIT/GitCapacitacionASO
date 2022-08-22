@@ -1,0 +1,14 @@
+{
+  "messages": [
+    {
+      "code": "mandatoryParametersMissing",
+      "message": "Some mandatory parameters has not been reported.",
+      "parameters": [
+        {
+          "name": "status.id"
+        }
+      ],
+      "type": "ERROR"
+    }
+  ]
+}

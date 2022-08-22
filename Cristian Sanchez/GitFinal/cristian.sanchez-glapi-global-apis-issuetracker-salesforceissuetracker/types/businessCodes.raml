@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  businessCodes:
+    type: object
+    properties:
+      documentCode:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Business document code (invoice number eg) In case of default, It could be the same as the folder.
+        required: false
+      entityId:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Bank code where document belongs.
+        required: false

@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "signVerificationFailed",
+      "message": "Sign verification failed.",
+      "type": "Error"
+    }
+  ]
+}

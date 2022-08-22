@@ -1,0 +1,23 @@
+{
+  "data": {
+      "companyId": "0013",
+      "complaintCode": "10091005923875328", 
+      "countryCode": "4", 
+      "stateCode": "5", 
+      "cityCode": "5004", 
+      "sourceSystem": "1", 
+      "productCode": "D103", 
+      "reason": "103", 
+      "creationDate": "2020-02-28T16:41:41.090Z", 
+      "clientName": "Nombre ejemplo", 
+      "documentType": "1", 
+      "documentNumber": "10311777", 
+      "personType": "1", 
+      "receptionInstance": "3", 
+      "receptionPoint": "1", 
+      "admission": "1", 
+      "complaintDescription": "Texto de ejemplo", 
+      "hasAnnex": true, 
+      "controlEntity": "1"
+  }
+}

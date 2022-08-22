@@ -1,0 +1,37 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+uses:
+  annotations: annotationsLibrary.raml
+
+displayName: RequiredIn
+description:  |
+  This annotation should be used in resources to specifies that a property is required in a country.
+type: array
+items:
+  properties:
+    country:
+      type: string
+      required: true
+      description: Country specified with the ISO 3166-1 alfa-2 two letters code.
+      pattern: ^[A-Z]{2}$
+      example: ES
+    method:
+      type: string
+      required: false
+      description: Define which method the annotation applies.
+      enum: [GET, PATCH, POST, PUT, DELETE, HEAD]
+      (annotations.enumDescription):
+        - GET : Applies for GET.
+        - PATCH : Applies for PATCH.
+        - POST: Applies for POST.
+        - PUT: Applies for POST.
+        - DELETE: Applies for POST.
+        - HEAD: Applies for POST.
+    payload:
+      type: string
+      required: false
+      description: Property exception for request, response or both.        
+      enum: [ REQUEST, RESPONSE, BOTH ]      
+      (annotations.enumDescription):
+        - REQUEST : Applies only in Request payload.
+        - RESPONSE : Applies only in Request payload.
+        - BOTH : Applies both, request and response payload.

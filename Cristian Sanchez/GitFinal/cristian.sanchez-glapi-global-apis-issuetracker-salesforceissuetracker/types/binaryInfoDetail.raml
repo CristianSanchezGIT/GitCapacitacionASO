@@ -1,0 +1,22 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  binaryInfoDetail:
+    type: object
+    discriminator: associationType
+    properties:
+      associationType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        enum: ["INTERNAL","EXTERNAL"]
+        (annotations.enumDescription):
+          - INTERNAL: Associated file is internal.
+          - EXTERNAL: Associated file is external.
+        description: |
+          States whether the associated file is external or internal.
+        required: false

@@ -1,0 +1,9 @@
+{
+  "status_code": 400, 
+  "messages": {
+    "codigo_queja": [
+      "Object with codigo_queja=14547897 does not exist."
+    ]
+  }, 
+  "detail": "Error APIException"
+}

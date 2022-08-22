@@ -1,0 +1,28 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+uses:
+  annotations: annotationsLibrary.raml
+
+displayName: ValuesSupportedIn
+description: |
+  This annotation should be used in enums to specifies values supported in a country.
+type: array
+items:
+  properties:
+    country:
+      type: string
+      required: true
+      description: Country specified with the ISO 3166-1 alfa-2 two letters code
+      pattern: ^[A-Z]{2}$
+      example: ES    
+    values:
+      type: array  
+      items:
+        properties:
+          value:
+            type: string
+            required: true
+            description: Enum value supported by country.
+          description:
+            type: string
+            required: false
+            description: Enum value description.      

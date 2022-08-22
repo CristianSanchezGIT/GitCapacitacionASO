@@ -1,0 +1,51 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  documentType:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        enum: ["PASSPORT","NIF","RESIDENTIAL_PASS","DNI","RUC","NIT","CURP","INE","DL","STATE_ID","DIPLOMATIC","FOREIGNERS","MILITARY","POLICE","RUT","ARC","EAD","CC","CI","RFC","DNI_UNDER_EIGHTEEN","ORIGIN_IDENTITY_DOCUMENT","DOCUMENT_ADD_IN_OFFICE","EIN","ITIN","NIF_OTHER_COUNTRY","CE"]
+        (annotations.enumDescription):
+          - PASSPORT: Identifier document passport.
+          - NIF: Identifier document fiscal identification number.
+          - RESIDENTIAL_PASS: Identifier document residence.
+          - DNI: Identifier national identity document.
+          - RUC: Identifier document single tax registration.
+          - NIT: Identifier document tax identification number.
+          - CURP: Unique Population Registry Code.
+          - INE: National Electoral Institute Code.
+          - DL: Drivers License Number.
+          - STATE_ID: State Issued Identification.
+          - DIPLOMATIC: Identifier document issued to members of diplomatic missions residing in.
+          - FOREIGNERS: Identifier card for foreign residents.
+          - MILITARY: Identifier document that accredits the military situation.
+          - POLICE: Police Identification Card Identifier.
+          - RUT: Identifier national identity document.
+          - ARC: Alien registration card.
+          - EAD: Employment authorization document.
+          - CC: Identifier document for citizenship card.
+          - CI: Civil Identification Card.
+          - RFC: Federal taxpayer registration.
+          - DNI_UNDER_EIGHTEEN: Identifier document fiscal identification number for people under eighteen 18.
+          - ORIGIN_IDENTITY_DOCUMENT: Fiscal Document Code for additional fiscal residence with the ES code ahead.
+          - DOCUMENT_ADD_IN_OFFICE: Other type of document validated in branch, like driving license.
+          - EIN: EIN (Employee Identitifcation Number) is a 9-digit number, like a social security number, that the IRS uses to identify certain entities for tax reasons. It’s a type of federal tax ID or government tax Id.
+          - ITIN: An Individual Taxpayer Identification Number is a tax processing number issued by the Internal Revenue Service.
+          - NIF_OTHER_COUNTRY: Nif of people from other countries that register in an office in SPAIN.
+          - CE: The Immigration Certificate is the document that fulfills the purposes of identification of foreigners in Colombian territory.
+        description: |
+          Identity document type identifier.
+        required: false

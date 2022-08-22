@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "invalidToken",
+      "message": "The request could not be completed due to invalid token.",
+      "type": "Error"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  contactDetails:
+    type: object
+    properties:
+      contact:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        description: |
+          Contact information value.
+        required: false
+      contactType:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        enum: ["EMAIL", "WORK_EMAIL", "LOGIN_EMAIL", "PHONE_NUMBER", "MOBILE_NUMBER", "COMPANY_NUMBER", "OFFICE_NUMBER"]
+        (annotations.enumDescription):
+          - EMAIL: Personal e-mail.
+          - WORK_EMAIL: Work e-mail.
+          - PHONE_NUMBER: Personal phone.
+          - MOBILE_NUMBER: Personal mobile phone.
+          - COMPANY_NUMBER: Company phone number.
+          - OFFICE_NUMBER: Work phone number.
+          - LOGIN_EMAIL: Login e-mail. Note that only one email of this kind is allowed.
+        description: |
+          Contact information type identifier. DISCLAIMER: A business manager can only have one LOGIN_EMAIL.
+        required: false
+      isPreferential:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: boolean
+        description: |
+          Indicates whether this contact information is the preferred one related by the customer for the current contact information type. For each type of contact, only one can be marked as preferential.
+        required: false
+  
+

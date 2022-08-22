@@ -1,0 +1,265 @@
+#%RAML 1.0
+title: Salesforce Issue Tracker
+version: v0.10.0
+description: !include docs/apiDescription.md
+baseUri: https://www.bbvaapis.com/salesforce-issue-tracker/v0
+
+uses:
+  issue: types/issue.raml
+  issues: types/issues.raml
+  topic:  types/topic.raml
+  document: types/document.raml
+  pagination: ../glapi-global-apis-commons-commons/types/pagination.raml
+annotationTypes:
+  countrySpecific: !include ../glapi-global-apis-commons-commons/annotations/countrySpecific.raml
+  exampleInput: !include ../glapi-global-apis-commons-commons/annotations/exampleInput.raml
+  enumDescription: !include ../glapi-global-apis-commons-commons/annotations/enumDescription.raml
+
+traits:
+  sortable: !include ../glapi-global-apis-commons-commons/traits/sortable.raml
+  pageable: !include ../glapi-global-apis-commons-commons/traits/pageable.raml
+  viewable: !include ../glapi-global-apis-commons-commons/traits/viewable.raml
+  expandable: !include ../glapi-global-apis-commons-commons/traits/expandable.raml
+  fieldable: !include ../glapi-global-apis-commons-commons/traits/fieldable.raml
+  unmasked: !include ../glapi-global-apis-commons-commons/traits/unmasked.raml
+
+resourceTypes:
+  collection: !include ../glapi-global-apis-commons-commons/resourceTypes/collection.raml
+  collection-item: !include ../glapi-global-apis-commons-commons/resourceTypes/collection-item.raml
+  subresource-collection: !include ../glapi-global-apis-commons-commons/resourceTypes/subresource-collection.raml
+  consulting-post: !include ../glapi-global-apis-commons-commons/resourceTypes/consulting-post.raml
+
+types:
+  errors: !include ../glapi-global-apis-commons-commons/types/errors.raml
+
+/issues:
+  description: |
+    Resource for managing Salesforce issues.
+  type: collection
+
+  get:
+    description: |
+      Service for retrieving a list of issues reported by a customer in Salesforce.
+    queryParameters:
+      targetUserId:
+        description: "Customer identifier for channel control purposes: channel + internal bank + reference + user."
+        type: string
+        example: "0023000120072230ADMIN01"
+        required: false
+      financialManagementCompanyId:
+        description: "Financial management company identifier."
+        type: string
+        example: "20073031"
+        required: false
+      client.id:
+        description: "Identifier of the Max Mistral client that opens the incident. Nine-digit code."
+        type: string
+        example: "687523691"
+        required: false
+    responses:
+      200:
+        description: Ok
+        body:
+          application/json:
+            type: object
+            example: !include examples/issues/get_200.json
+            properties:
+              data:
+                type: issues.issues
+      400:
+        description: Bad Request
+        body:
+          application/json:
+            type: errors
+            examples:
+              invalidParameters:
+                value: !include examples/issues/get_400_invalidParameters.json
+                description: JSON response for bad request errors.
+                displayName: Invalid parameters
+              invalidQuerySalesforce:
+                value: !include examples/issues/issue-id/get_400_invalidQuerySalesforce.json
+                description: Invalid query.
+                displayName: InvalidQuerySalesforce
+              invalidFieldSalesforce:
+                value: !include examples/issues/issue-id/get_400_invalidFieldSalesforce.json
+                description: Invalid or non-existent fields.
+                displayName: InvalidFieldSalesforce
+  post:
+    description: |
+      Service for creating a new issue.
+    body:
+      application/json:
+        example: !include examples/issues/post_request.json
+        type: issue.issue
+
+    responses:
+      201:
+        description: Created
+        headers:
+          Location:
+            displayName: location
+            description: This header must provide the resouce location.
+            type: string
+            required: true
+            example: /issues/123fasb25a
+        body:
+          application/json:
+            example: !include examples/issues/post_201.json
+            type: object
+            properties:
+              data:
+                type: issue.issue
+
+      400:
+        description: Bad Request
+        body:
+          application/json:
+            type: errors
+            examples:
+              mandatoryParametersMissing:
+                value: !include examples/issues/post_400_mandatoryParametersMissing.json
+                description: JSON response for mandatory parameters missing.
+                displayName: Mandatory parameters missing
+              invalidParameters:
+                value: !include examples/issues/post_400_invalidParameters.json
+                description: JSON response for invalid parameters.
+                displayName: Invalid parameters
+              atLeastContactEmailIsRequired:
+                value: !include examples/issues/post_400_atLeastContactEmailIsRequired.json
+                description: JSON response for E-mail missing.
+                displayName: E-mail missing
+              functionalError:
+                value: !include examples/topics/get_400_functionalError.json
+                description: This record is currently in an approval process. A record can be in only one approval process at a time.
+                displayName: FunctionalError
+  /{issue-id}:
+    description: |
+      It manages the information of a registered specific case.
+    type: collection-item
+
+    get:
+      description: |
+        It retrieving a specific PQR case reported by a customer in Salesforce.
+      responses:
+        200:
+          description: Ok
+          body:
+            application/json:
+              example: !include examples/issues/issue-id/get_200.json
+              type: object
+              properties:
+                data:
+                  type: issue.issue
+        400:
+          description: Bad Request
+          body:
+            application/json:
+              type: errors
+              examples:
+                invalidQuerySalesforce:
+                  value: !include examples/issues/issue-id/get_400_invalidQuerySalesforce.json
+                  description: Invalid query.
+                  displayName: InvalidQuerySalesforce
+                invalidFieldSalesforce:
+                  value: !include examples/issues/issue-id/get_400_invalidFieldSalesforce.json
+                  description: Invalid or non-existent fields.
+                  displayName: InvalidFieldSalesforce
+    patch:
+      description: |
+        It updates the information of a specific case stored in Salesforce.
+      body:
+        application/json:
+          example: !include examples/issues/issue-id/patch_request.json
+          type: issue.issue
+      responses:
+        204:
+          description: No Content
+        400:
+          description: Bad Request.
+          body:
+            application/json:
+              type: errors
+              examples:
+                functionalError:
+                  value: !include examples/topics/get_400_functionalError.json
+                  description: This record is currently in an approval process. A record can be in only one approval process at a time.
+                  displayName: FunctionalError
+/topics:
+  description: |
+    When filing a complain of a customer, the typology (Specifications of a type of claim) that will be based on the type of claim or associated claim with the product that is being filed.
+  type: collection
+  get:
+    description: |
+      List the different types of cases related to a product or service.
+    queryParameters:
+      product.id:
+        description: "Product code related to the claim."
+        type: string
+        example: "15"
+        required: false
+      subProduct.id:
+        description: "Subproduct code related to the claim."
+        type: string
+        example: "1000"
+        required: false
+    responses:
+      200:
+        description: OK.
+        body:
+          application/json:
+            type: object
+            examples:
+              common:
+                value: !include examples/topics/get_200.json
+                description: Example of JSON output.
+            properties:
+              data:
+                type: topic.topic[]
+      400:
+        description: Bad Request.
+        body:
+          application/json:
+            type: errors
+            examples:
+              functionalError:
+                value: !include examples/topics/get_400_functionalError.json
+                description: Please provide the two necessary code.
+                displayName: FunctionalError
+/documents:
+  description: |
+    Represents the document and its metadata related to an issue that will be saved in the document manager.
+  type: collection
+  post:
+    description: |
+      Creates a document and save it in the document manager.
+    body:
+      application/json:
+        example: !include examples/documents/post_request.json
+        type: document.document
+    responses:
+      201:
+        description: Created
+        headers:
+          Location:
+            displayName: location
+            description: This header must provide the resouce location.
+            type: string
+            required: true
+            example: /documents/ae92bea5-b213-41d5-8a65-fb09b50ef8e4
+        body:
+          application/json:
+            example: !include examples/documents/post_201.json
+            type: object
+            properties:
+              data:
+                type: document.document
+      400:
+        description: Bad Request.
+        body:
+          application/json:
+            type: errors
+            examples:
+              metadataValidation:
+                value: !include examples/documents/post_400_metadataValidation.json
+                description: Metadata validation failed.
+                displayName: MetadataValidation

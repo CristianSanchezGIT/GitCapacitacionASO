@@ -1,0 +1,23 @@
+#%RAML 1.0 Library
+uses:
+  customControlAttributes: ../customControlAttributes.raml
+
+types:
+  user:
+    type: customControlAttributes.customControlAttributes
+    discriminatorValue: USER_CHANNEL_CONTROL
+    description:  |
+      An attribute with this annotation is considered a functional user code.
+      Use this annotation to mark a user code that is used for channel management.
+  contract:
+    type: customControlAttributes.customControlAttributes
+    discriminatorValue: CONTRACT_CHANNEL_CONTROL
+    description: |
+      An attribute with this annotation is considered a functional contract code. 
+      Use this annotation to mark a contract attribute that is used for channel management.
+  amount:
+    type: customControlAttributes.customControlAttributes
+    discriminatorValue: AMOUNT_CHANNEL_CONTROL
+    description: |
+      An attribute with this annotation is considered a functional amount
+      Use this annotation to mark an amount property that is used for channel management.

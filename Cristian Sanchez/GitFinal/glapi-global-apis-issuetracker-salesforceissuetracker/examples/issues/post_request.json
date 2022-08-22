@@ -1,0 +1,22 @@
+{
+  "targetUserId": "0023000120072230ADMIN01",
+  "appUserId": "ADMIN01",
+  "financialManagementCompanyId": "20072230",
+  "description": "Incidencia a la hora de crear una transferencia.",
+  "origin": "WEB_FORM",
+  "issuer": {
+    "fullName": "John Doe García",
+    "contactDetails": [
+      {
+        "contact": "637824316",
+        "contactType": "PHONE_NUMBER",
+        "isPreferential": true
+      },
+      {
+        "contact": "JohnDoe@organization.com",
+        "contactType": "WORK_EMAIL"
+      }
+    ]
+  },
+  "caseCreator": "Creador del caso"
+}

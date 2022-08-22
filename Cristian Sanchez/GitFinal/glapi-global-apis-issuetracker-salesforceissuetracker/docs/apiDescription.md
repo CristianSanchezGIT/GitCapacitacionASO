@@ -1,0 +1,2 @@
+API for managing SalesForce Issues for BBVA and CIB clients. This API describe resources for creating new SalesForce Issues for a certain financial management company, indicating
+required information for a correct identification of the issue, and another resource to list and see details of a list of issues.

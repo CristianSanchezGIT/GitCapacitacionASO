@@ -1,0 +1,10 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+
+uses: 
+  customControlServices: ../types/customControlServices.raml
+
+displayName: customControlServices
+description: Annotation to declare an specific endpoint behavior of an API.
+allowedTargets: [Method]
+type: array
+items: customControlServices.customControlService 

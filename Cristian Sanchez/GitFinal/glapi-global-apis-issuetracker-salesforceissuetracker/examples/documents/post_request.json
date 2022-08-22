@@ -1,0 +1,40 @@
+{
+  "customerId": "customer01",
+  "issueId": "issue01",
+  "metadata": {
+    "documentInfo": {
+      "objectName": "Solicitud del Cliente",
+      "owner": "E012345",
+      "inceptionDate": "2016-03-15T11:34:28.112Z",
+      "creationUser": "E012345",
+      "responsible": "PQR"
+    },
+    "lastChange": {
+      "date": "2016-05-20T19:00:00Z",
+      "username": "E012345"
+    },
+    "contentInfo": {
+      "contentType": "application/pdf",
+      "documentFamily": "pdf",
+      "size": "200000"
+    },
+    "categorization": {
+      "documentType": {
+        "id": "SE-SM-00001"
+      }
+    },
+    "originInfo": {
+      "channel": "Call center"
+    },
+    "securityLevelInfo": {
+      "confidentiality": "VIP"
+    },
+    "binaryInfo": {
+      "associationType": "EXTERNAL",
+      "fileId": "abc123",
+      "md5": "63af18f1766ae565c2b1a835818e7abe",
+      "mimeType": "application/json",
+      "size": "100"
+    }
+  }
+}

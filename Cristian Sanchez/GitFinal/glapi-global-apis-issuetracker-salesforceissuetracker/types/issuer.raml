@@ -1,0 +1,45 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  contactDetails: contactDetails.raml
+  location: location.raml
+types:
+  issuer:
+    type: object
+    properties:
+      fullName:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+            Name of the customer.
+        required: false
+      contactDetails:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: contactDetails.contactDetails[]
+        description: |
+          Contact details.
+        required: false
+      location:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: location.location
+        description: |
+          Physical location address.
+        required: false

@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  functional:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Functional identifier. This id is used to make versions. This id is based on the id of the first version of a document. Each version in the document manager has its own binary and in consecuence its own id. But if a document with an id 1000 is a version of another document whose id is 2030, the functional id of the first one will be 2030 and the field version will be 2.
+        required: false
+      version:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Document version.
+        required: false

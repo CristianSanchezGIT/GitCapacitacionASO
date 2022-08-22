@@ -1,0 +1,128 @@
+#%RAML 1.0 DataType
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+description: Default data structure for warnings in BBVA APIs
+type: array
+items:
+  properties:
+    code:
+      (annotations.bindingDefinition):
+        - method: "GET"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "POST"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "PUT"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "PATCH"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "DELETE"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "HEAD"
+          input: "NONE"
+          output: "REQUIRED"
+      type: string
+      required: true
+      description: Code associated to the warning
+    message:
+      (annotations.bindingDefinition):
+        - method: "GET"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "POST"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "PUT"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "PATCH"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "DELETE"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "HEAD"
+          input: "NONE"
+          output: "REQUIRED"
+      type: string
+      required: true
+      description: Meesage associated to the warning
+    parameters:
+      (annotations.bindingDefinition):
+        - method: "GET"
+          input: "NONE"
+          output: "OPTIONAL"
+        - method: "POST"
+          input: "NONE"
+          output: "OPTIONAL"
+        - method: "PUT"
+          input: "NONE"
+          output: "OPTIONAL"
+        - method: "PATCH"
+          input: "NONE"
+          output: "OPTIONAL"
+        - method: "DELETE"
+          input: "NONE"
+          output: "OPTIONAL"
+        - method: "HEAD"
+          input: "NONE"
+          output: "REQUIRED"
+      type: array
+      required: false
+      description: Parameters wrong informed.
+      items:
+        properties:
+          name:
+            (annotations.bindingDefinition):
+              - method: "GET"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "POST"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "PUT"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "PATCH"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "DELETE"
+                input: "NONE"
+                output: "REQUIRED"
+              - method: "HEAD"
+                input: "NONE"
+                output: "REQUIRED"
+            type: string
+            required: true
+            description: Name of parameter wrong informed.
+    type:
+      (annotations.bindingDefinition):
+        - method: "GET"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "POST"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "PUT"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "PATCH"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "DELETE"
+          input: "NONE"
+          output: "REQUIRED"
+        - method: "HEAD"
+          input: "NONE"
+          output: "REQUIRED"
+      type: string
+      required: true
+      description: Type of warning.
+      enum: ["WARNING"]
+      (annotations.enumDescription):
+         - WARNING: It indicates an error that does not affect functionality, but must inform and consumers can take action according to the warning.
