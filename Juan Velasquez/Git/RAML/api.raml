@@ -1,0 +1,205 @@
+#%RAML 1.0
+title: Customers
+version: v1.0.0
+description: !include docs/apiDescription.md
+baseUri: https://www.bbvaapis.com/customers/v1
+
+uses: 
+ customer: types/customer.raml
+ address: types/address.raml
+ phone: types/phone.raml
+
+annotationTypes:
+	enumDescription: !include ../glapi-global-apis-commons-commons/annotations/enumDescription.raml
+	
+traits:
+	viewable: !include ../glapi-global-apis-commons-commons/traits/viewable.raml
+
+resourceTypes:
+	collection: !include ../glapi-global-apis-commons-commons/resourceTypes/collection.raml
+	collection-item: !include ../glapi-global-apis-commons-commons/resourceTypes/collection-item.raml
+
+types:
+  errors: !include ../glapi-global-apis-commons-commons/types/errors.raml
+
+/customer:
+	description: |
+		Es la información general con respecto a los clientes (identificación, dirección y teléfono)
+	type: collection
+
+	/{customer-id}:
+		description: |
+			Recurso para el manejo de datos de un cliente en especifico
+		type: collection-item
+		uriParameters:
+			customer-id:
+				description: "Identificador del cliente"
+				type: String
+				example: "1"
+		get:
+			description: |
+				Servicio para la obtención los detalles de un cliente.
+
+			responses:
+				200:
+					body:
+						application/json:
+							type:object
+							example:
+								basic:
+	                value: !include examples/customers/customer-id/get_200.json
+	                description: Ejemplo de un JSON  de salida respecto a customer-id
+	                displayName: Vista completa del JSON GET /customer-id
+
+			/address:
+				description: |
+					Recurso para el manejo de las direcciones de un cliente en especifico.
+				type: collection
+				post:
+					description: |
+						Crea una nueva dirección del cliente
+
+					body:
+						application/json: 
+							example: !include examples/customers/customer-id/address/post_request.json
+							description: Ejemplo de un JSON  de entrada respecto a address
+							displayName: Ejemplo completo del JSON de entrada.
+							type: addressPost.addressPost  #Aquí va eso?#
+					responses:
+						201:
+							description: |
+								Creación exitosa del recurso
+							body:
+								application/json:
+									example: !include examples/customers/customer-id/address/post_201.json
+									description: Ejemplo de un JSON  de salida respecto a address
+					        displayName: Vista completa del JSON POST /address
+									type:object
+									properties:
+										data:
+											type: addressPost.addressPost
+
+					/{address-id}:
+						description: |
+							Recurso para el manejo de una dirección en especifico
+						type: collection-item
+						uriParameters:
+							address-id:
+								description:"Identificador de una dirección en especifico"
+								type:String
+								example:"1"
+						get:
+							description: |
+								Servicio para la obtención los detalles de una dirección.
+							responses:
+								200:
+									body:
+										application/json:
+											type:object
+											example:
+												basic:
+					                value: !include examples/customers/customer-id/address/address-id/get_200.json
+					                description: Ejemplo de un JSON  de salida respecto a address-id
+					                displayName: Vista completa del JSON GET /address-id
+										
+						patch:
+							description: |
+								Servicio para la edición de una dirección en especifico
+							body:
+								application/json:
+									example:
+										basic: 
+											value: !include examples/customers/customer-id/address/address-id/patch_request.json
+											description: Ejemplo de un JSON de entrada respecto a address-id
+											displayName:  Ejemplo completo del JSON de entrada.
+							responses:
+				        200:
+				          body:
+				            application/json:
+				              type: object
+				              example:
+				                consume:
+				                  value: examples/customers/customer-id/address/address-id/patch_200.json
+				                  description: Ejemplo de un JSON de salida respecto a address-id
+				                  displayName: Vista completa del JSON PATCH /address-id
+				              properties:
+				                data:
+				                  type: address.address
+			/phone:
+				description: |
+					Recurso para el manejo de los teléfonos de un cliente en específico.
+				type: collection
+				post:
+					description: |
+						Crea un nuevo teléfono del cliente
+
+					body:
+						application/json: 
+							example: !include examples/customers/customer-id/phone/post_request.json
+							description: Ejemplo de un JSON de entrada respecto a phone
+							displayName:  Ejemplo completo del JSON de entrada.
+							type: phonePost.phonePost  #Aquí va eso?#
+					responses:
+						201:
+							description: |
+								Creación exitosa del recurso
+							body:
+								application/json:
+									example: !include examples/customers/customer-id/phone/post_201.json
+									description: Ejemplo de un JSON de salida respecto a phone
+				          displayName: Vista completa del JSON POST /phone
+									type:object
+									properties:
+										data:
+											type: phonePost.phonePost
+
+					/{phone-id}:
+						description: |
+							Recurso para el manejo de un teléfono en especifico
+						type: collection-item
+						uriParameters:
+							address-id:
+								description:"Identificador de un teléfono en especifico"
+								type:String
+								example:"1"
+						get:
+							description: |
+								Servicio para la obtención los detalles de un teléfono.
+							responses:
+								200:
+									body:
+										application/json:
+											type:object
+											example:
+												basic:
+					                value: !include examples/customers/customer-id/phone/phone-id/get_200.json
+					                description: Ejemplo de un JSON de salida respecto a phone-id
+				          				displayName: Vista completa del JSON GET /phone-id
+										
+						patch:
+							description: |
+								Servicio para la edición de un teléfono en específico
+							body:
+								application/json:
+									example:
+										basic:
+											value: !include examples/customers/customer-id/phone/phone-id/patch_request.json
+											description: Ejemplo de un JSON de entrada respecto a phone-id
+											displayName:  Ejemplo completo del JSON de entrada.
+							responses:
+				        200:
+				          body:
+				            application/json:
+				              type: object
+				              example:
+				                consume:
+				                  value: examples/customers/customer-id/phone/phone-id/patch_200.json
+				                  description: Ejemplo de un JSON de salida respecto a phone-id
+				          				displayName: Vista completa del JSON PATCH /phone-id
+				              properties:
+				                data:
+				                  type: phone.phone
+
+
+				
+					#PATCH y GET#

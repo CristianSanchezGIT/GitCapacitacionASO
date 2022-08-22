@@ -1,0 +1,116 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+	phone:
+		type: object
+		properties:
+			id:
+				(annotations.bindingDefinition):
+					- method: "GET"
+						input: "NONE"
+						output: "REQUIRED"
+					- method: "POST"
+						input: "NONE"
+						output: "REQUIRED"
+					- method: "PATCH"
+						input: "NONE"
+						output: "REQUIRED"
+				type: String
+				description: |
+					Identificador del teléfono.
+
+		phoneType:
+			(annotations.bindingDefinition):
+				- method: "GET"
+					input: "NONE"
+					output: "REQUIRED"
+				- method: "POST"
+					input: "REQUIRED"
+					output: "REQUIRED"
+				- method: "PATCH"
+					input: "REQUIRED"
+					output: "REQUIRED"
+			type: object
+			description: |
+				Tipo de teléfono de contacto del cliente
+			properties:
+				id:
+					(annotations.bindingDefinition):
+						- method: "GET"
+						input: "NONE"
+						output: "REQUIRED"
+						- method: "POST"
+						input: "NONE"
+						output: "REQUIRED"
+						- method: "PATCH"
+						input: "NONE"
+						output: "REQUIRED"
+type: String
+enum: [CASA, OFICINA, CELULAR]
+(annotations.enumDescription):
+- CASA: Telefono de la casa.
+- OFICINA: Telefono de la oficina.
+- CELULAR: Telefono celular.
+description: |
+Identificador del tipo de teléfono del cliente.
+description:
+(annotations.bindingDefinition):
+- method: "GET"#
+input: "NONE"
+output: "OPTIONAL"
+- method: "POST"
+input: "OPTIONAL"
+output: "OPTIONAL"
+- method: "PATCH"
+input: "OPTIONAL"
+output: "OPTIONAL"
+type: String
+description: |
+Tipo de teléfono de contacto del cliente
+
+indicative:
+(annotations.bindingDefinition):
+- method: "GET"
+input: "NONE"
+output: "REQUIRED"
+- method: "POST"
+input: "REQUIRED"
+output: "REQUIRED"
+- method: "PATCH"
+input: "REQUIRED"
+output: "REQUIRED"
+type: String
+description: |
+Indicativo del área de ubicación del teléfono. 
+
+number:
+(annotations.bindingDefinition):
+- method: "GET"
+input: "NONE"
+output: "REQUIRED"
+- method: "POST"
+input: "REQUIRED"
+output: "REQUIRED"
+- method: "PATCH"
+input: "REQUIRED"
+output: "REQUIRED"
+type: Number
+description: |
+Número telefónico del cliente. 
+
+extension:
+(annotations.bindingDefinition):
+- method: "GET"
+input: "NONE"
+output: "OPTIONAL"
+- method: "POST"
+input: "OPTIONAL"
+output: "OPTIONAL"
+- method: "PATCH"
+input: "OPTIONAL"
+output: "OPTIONAL"
+type: String
+description: |
+Extensión del número telefónic

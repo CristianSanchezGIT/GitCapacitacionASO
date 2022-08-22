@@ -1,0 +1,23 @@
+{
+  "data": {
+    "id": "1",
+    "name": "Arturo",
+    "identification": {
+      "type": {
+        "id": "CC",
+        "description": ""
+      },
+      "idNumber": "564779"
+    },
+    "address": [
+      {
+        "id": "1"
+      }
+    ],
+    "phone": [
+      {
+        "id": "1"
+      }
+    ]
+  }
+}

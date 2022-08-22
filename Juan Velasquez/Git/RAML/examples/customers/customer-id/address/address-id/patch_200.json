@@ -1,0 +1,29 @@
+{
+  "data": {
+    "id": "1",
+    "streetName": "",
+    "streetNumber": "12",
+    "additionalDescription": "puerta blanca",
+    "ordinalFirst": "",
+    "bisFirst": "",
+    "cardinalFirst": "",
+    "badgeFirst": "1",
+    "ordinalSecond": "",
+    "bisSecond": "",
+    "cardinalSecond": "",
+    "badgeSecond": "2",
+    "type": {
+      "id": "CASA",
+      "description": ""
+    },
+    "streetType": {
+      "id": "CALLE",
+      "description": ""
+    },
+    "geographicalLocation": {
+      "country": "Colombia",
+      "state": "Bogotá D.C.",
+      "city": "Bogotá D.C."
+    }
+  }
+}
