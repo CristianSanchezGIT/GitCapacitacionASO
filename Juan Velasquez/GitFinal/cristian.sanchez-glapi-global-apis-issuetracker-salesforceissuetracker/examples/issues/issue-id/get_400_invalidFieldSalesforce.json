@@ -1,0 +1,10 @@
+{
+  "messages": [
+    {
+      "code": "invalidFieldSalesforce",
+      "message": "Invalid or non-existent fields.",
+      "type": "ERROR",
+      "parameters":[]
+    }
+  ]
+}

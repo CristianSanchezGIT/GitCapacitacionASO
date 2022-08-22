@@ -1,0 +1,47 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  binaryInfoDetail: binaryInfoDetail.raml
+
+types:
+  external:
+    type: binaryInfoDetail.binaryInfoDetail
+    discriminatorValue: EXTERNAL
+    description: States whether the associated file is external.
+    properties:
+      fileId:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Associated file identifier.
+        required: false
+      md5:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          MD5 obtained from the external file.
+        required: false
+      size:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          The external file size.
+        required: false
+      mimeType:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          The myme type of the external file.
+        required: false

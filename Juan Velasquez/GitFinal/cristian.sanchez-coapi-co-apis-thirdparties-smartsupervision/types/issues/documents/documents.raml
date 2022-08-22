@@ -1,0 +1,79 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+types:
+  documents:
+    type: object
+    properties:
+      complaintCode:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input : "REQUIRED"
+            output: "REQUIRED"
+          - method: "GET"
+            input:  "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Corresponding complaint code that is being consulted.
+        required: false
+      type:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input : "REQUIRED"
+            output: "REQUIRED"
+          - method: "GET"
+            input:  "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          File type or file extension.
+        required: false
+      fileLink:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input : "NONE"
+            output: "REQUIRED"
+          - method: "GET"
+            input:  "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          URL for file download.
+        required: false
+      status:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input : "NONE"
+            output: "OPTIONAL"
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: number
+        description: |
+          File status.
+        required: false
+      reference:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input : "NONE"
+            output: "OPTIONAL"
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: number
+        description: |
+          Corresponds to the reference code to which the file belongs.
+        required: false
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input : "NONE"
+            output: "OPTIONAL"
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          File identification number.
+        required: false

@@ -1,0 +1,380 @@
+#%RAML 1.0
+title: Smart Supervision
+version: v0.4.0
+description: !include docs/apiDescription.md
+baseUri: https://www.bbvaapis.com/smart-supervision/v0
+
+uses:
+  issuesInfo: types/issues/issuesInfo.raml
+  issues: types/issues/issues.raml
+  issue: types/issues/issue-id/issue.raml
+  documentsInfo: types/issues/documents/documentsInfo.raml
+  documents: types/issues/documents/documents.raml
+  document: types/issues/documents/document.raml
+  confirm:  types/issues/confirm/confirm.raml
+  generateToken: types/generateToken/generateToken.raml
+  pagination:  ../glapi-global-apis-commons-commons/types/pagination.raml
+  
+resourceTypes:
+  collection: !include ../glapi-global-apis-commons-commons/resourceTypes/collection.raml
+  collection-item: !include ../glapi-global-apis-commons-commons/resourceTypes/collection-item.raml
+  consulting-post: !include ../glapi-global-apis-commons-commons/resourceTypes/consulting-post.raml
+
+traits:
+  pageable: !include ../glapi-global-apis-commons-commons/traits/pageable.raml
+
+/issues:
+  description: |
+    Management service of all the PQRs(Petitions, Complaints and Claims) stored in the Superfinanciera of Colombia.
+  type: collection
+  get:
+    description: |
+      Retrieves all the PQRs(Petitions, Complaints and Claims) stored in the Superfinanciera of Colombia.
+    is: [pageable]
+    queryParameters:
+      companyId:
+        description: "Company's identifier to consult and access to the SuperFinanciera of Colombia information."
+        type: string
+        required: true
+        example: "0013"
+    headers:
+      Authorization:
+         displayName: Authorization
+         description: Temporary user access code.
+         type: string
+         required: true
+         example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MjU2NTY1LCJqdGkiOiJiYjk4YjUxMjJmZTA0OWM5ODUxOGZlNjhkMmI0N2FiMyIsInVzZXJfaWQiOjIxNH0.OQm9hegrTiX6Krij369tQ-8_SYBtXsPMxpv_8GSA_zg
+    responses:
+      200:
+        description: OK.
+        body:
+          application/json:
+            examples:
+              simplest:
+                  value: !include examples/issues/get_200.json
+                  description: JSON output example for the simplest call GET /issues
+                  displayName: Basic view JSON output example
+              pageable:
+                  value: !include examples/issues/get_200_pageable.json
+                  description: JSON output example for the pageable call GET /issues
+                  displayName: Pageable view JSON output example
+            type: object
+            properties:
+              data:
+                type: issuesInfo.issuesInfo
+              pagination:
+                type: pagination.pagination
+                required: false
+      204:
+        description: No Content.
+      404:
+        description: Not Found.
+      400:
+        description: Bad Request.
+        body:
+          application/json:
+            examples:
+              functionalError:
+                value: !include examples/issues/get_400_functionalError.json
+                description: The request could not be completed due to backend errors.
+                displayName: JSON output example when there are backend errors.
+              invalidToken:
+                value: !include examples/issues/get_400_invalidToken.json
+                description: The request could not be completed because the token is invalid.
+                displayName: JSON output example when there are token invalid.
+              signVerificationFailed:
+                  value: !include examples/issues/get_400_signVerificationFailed.json
+                  description: The request could not be completed due to an error with signature validation.
+                  displayName: Example of JSON output when signing to SmartSupervision fails.
+              
+  post:
+    description: |
+      This web service makes the shipments of issues from the bank to the Superfinanciera of Colombia.
+    body:
+      application/json:
+        example: !include examples/issues/post_request.json
+        type: issues.issues
+    headers:
+      Authorization:
+         displayName: Authorization
+         description: Temporary user access code.
+         type: string
+         required: true
+         example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MjU2NTY1LCJqdGkiOiJiYjk4YjUxMjJmZTA0OWM5ODUxOGZlNjhkMmI0N2FiMyIsInVzZXJfaWQiOjIxNH0.OQm9hegrTiX6Krij369tQ-8_SYBtXsPMxpv_8GSA_zg
+    responses:
+      201:
+        description: Created.
+        headers:
+          Location:
+            displayName: Location
+            description: This header must provide the URI to reach the created resource.
+            type: string
+            required: true
+            example: "/issues/100"
+        body:
+          application/json:
+            type: object
+            example: !include examples/issues/post_201.json
+            properties:
+                data:
+                  type: issues.issues
+      400:
+        description: Bad Request.
+        body:
+          application/json:
+            examples:
+              functionalError:
+                value: !include examples/issues/post_400_functionalError.json
+                description: The request could not be completed due to backend errors.
+                displayName: JSON output example when there are backend errors.
+              missingOrIncorrectData:
+                value: !include examples/issues/post_400_missingOrIncorrectData.json
+                description: Send the correct information.
+                displayName: Missing OrIncorrect Data.
+              invalidToken:
+                value: !include examples/issues/post_400_invalidToken.json
+                description: The request could not be completed because the token is invalid.
+                displayName: JSON output example when there are token invalid.
+              signVerificationFailed:
+                  value: !include examples/issues/post_400_signVerificationFailed.json
+                  description: The request could not be completed due to an error with signature validation.
+                  displayName: Example of JSON output when signing to SmartSupervision fails.
+              
+  /{issue-id}:
+    description: |
+      It allows managing the detailed information of a PQR(Petitions, Complaints and Claims) by its identifier.
+    type: collection-item
+    uriParameters:
+      issue-id:
+        description: "Unique issue identifier."
+        type: string
+        required: true
+        example: "25987654321"
+    put:
+      description: |
+        It is in charge of consuming the service exposed by the Superfinanciera to update a specific case.
+      body:
+        application/json:
+          example: !include examples/issues/issue-id/put_request.json
+          type: issue.issue
+      headers:
+        Authorization:
+           displayName: Authorization
+           description: Temporary user access code.
+           type: string
+           required: true
+           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MjU2NTY1LCJqdGkiOiJiYjk4YjUxMjJmZTA0OWM5ODUxOGZlNjhkMmI0N2FiMyIsInVzZXJfaWQiOjIxNH0.OQm9hegrTiX6Krij369tQ-8_SYBtXsPMxpv_8GSA_zg
+      responses:
+        200:
+          description: OK.
+          body:
+            application/json:
+              type: object
+              example: !include examples/issues/issue-id/put_response.json
+              properties:
+                  data:
+                    type: issue.issue
+        404:
+          description: Not Found.
+        400:
+          description: Bad Request.
+          body:
+            application/json:
+              examples:
+                signVerificationFailed:
+                  value: !include examples/issues/issue-id/put_400_signVerificationFailed.json
+                  description: The request could not be completed due to an error with signature validation.
+                  displayName: Example of JSON output when signing to SmartSupervision fails.
+                invalidToken:
+                  value: !include examples/issues/issue-id/put_400_invalidToken.json
+                  description: The request could not be completed because the token is invalid.
+                  displayName: JSON output example when there are token invalid.
+                
+  /documents-management:
+    description: |
+      Information of documents that may be related to a PQRs(Petitions, Complaints and Claims).
+    type: consulting-post
+    get:
+      description: |
+        Consultation of documentation for PQRs(Petitions, Complaints and Claims) in the SmartSupervision application of the Superfinanciera of Colombia.
+      is: [pageable]
+      queryParameters:
+        complaintCode:
+          description: "Entity complaint identifier."
+          type: string
+          example: "10091005923875328"
+          required: true
+        companyId:
+          description: "Company's identifier to consult and access to the superfinanciera of Colombia information."
+          type: string
+          example: "0013"
+          required: true
+      headers:
+        Authorization:
+           displayName: Authorization
+           description: Temporary user access code.
+           type: string
+           required: true
+           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MjU2NTY1LCJqdGkiOiJiYjk4YjUxMjJmZTA0OWM5ODUxOGZlNjhkMmI0N2FiMyIsInVzZXJfaWQiOjIxNH0.OQm9hegrTiX6Krij369tQ-8_SYBtXsPMxpv_8GSA_zg
+      responses:
+        200:
+          description: OK.
+          body:
+            application/json:
+              type: object
+              examples:
+                simplest:
+                    value: !include examples/issues/documents/get_200.json
+                    description: JSON output example for the simplest call GET /documents-management
+                    displayName: Basic view JSON output example
+                pageable:
+                    value: !include examples/issues/documents/get_200_pageable.json
+                    description: JSON output example for the pageable call GET /documents-management
+                    displayName: Pageable view JSON output example
+              properties:
+                data:
+                  type: documentsInfo.documentsInfo
+                pagination:
+                  type: pagination.pagination
+                  required: false
+        204:
+          description: No Content.
+        404:
+          description: Not Found.
+        400:
+          description: Bad Request.
+          body:
+            application/json:
+              examples:
+                functionalError:
+                  value: !include examples/issues/documents/get_400_functionalError.json
+                  description: The request could not be completed due to backend errors.
+                  displayName: JSON output example when there are backend errors.
+                signVerificationFailed:
+                  value: !include examples/issues/documents/get_400_signVerificationFailed.json
+                  description: The request could not be completed due to an error with signature validation.
+                  displayName: Example of JSON output when signing to SmartSupervision fails.
+                invalidToken:
+                  value: !include examples/issues/documents/get_400_invalidToken.json
+                  description: The request could not be completed because the token is invalid.
+                  displayName: JSON output example when there are token invalid.
+                invalidCode:
+                  value: !include examples/issues/documents/get_400_invalidCode.json
+                  description: Please validate the code.
+                  displayName: Invalid Code.
+    post:
+      description: |
+        Saves the documents associated with a PQR(Petitions, Complaints and Claims) in the SmartSupervision application of the Superfinanciera of Colombia.
+      body:
+        multipart/form-data:
+          type: document.document
+      headers:
+        Authorization:
+           displayName: Authorization
+           description: Temporary user access code.
+           type: string
+           required: true
+           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MjU2NTY1LCJqdGkiOiJiYjk4YjUxMjJmZTA0OWM5ODUxOGZlNjhkMmI0N2FiMyIsInVzZXJfaWQiOjIxNH0.OQm9hegrTiX6Krij369tQ-8_SYBtXsPMxpv_8GSA_zg
+      responses:
+        200:
+          description: OK.
+          body:
+            application/json:
+              example: !include examples/issues/documents/post_200.json
+              type: object
+              properties:
+                data:
+                  type: documents.documents
+        400:
+          description: Bad Request.
+          body:
+            application/json:
+              examples:
+                functionalError:
+                  value: !include examples/issues/documents/post_400_functionalError.json
+                  description: The request could not be completed due to backend errors.
+                  displayName: JSON output example when there are backend errors.
+                missingOrIncorrectData:
+                  value: !include examples/issues/documents/post_400_missingOrIncorrectData.json
+                  description: Send the correct information.
+                  displayName: Missing OrIncorrect Data.
+                invalidToken:
+                  value: !include examples/issues/documents/post_400_invalidToken.json
+                  description: The request could not be completed because the token is invalid.
+                  displayName: JSON output example when there are token invalid.
+                signVerificationFailed:
+                    value: !include examples/issues/documents/post_400_signVerificationFailed.json
+                    description: The request could not be completed due to an error with signature validation.
+                    displayName: Example of JSON output when signing to SmartSupervision fails.
+                errorLoadingDocument:
+                  value: !include examples/issues/documents/post_400_errorLoadingDocument.json
+                  description: The request could not be completed due to an error with loading documents.
+                  displayName: Error Loading Document.
+
+  /confirm:
+    description: |
+      This resource manage the information of PQRs(Petitions, Complaints and Claims) that the bank recieve from the Superfinanciera of Colombia.
+    type: consulting-post   
+    post:
+      description: |
+        This web service confirm the saved of the issues in Salesforce.
+      body:
+        application/json:
+          example: !include examples/issues/confirm/post_request.json
+          type: confirm.confirm
+      headers:
+        Authorization:
+           displayName: Authorization
+           description: Temporary user access code.
+           type: string
+           required: true
+           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MjU2NTY1LCJqdGkiOiJiYjk4YjUxMjJmZTA0OWM5ODUxOGZlNjhkMmI0N2FiMyIsInVzZXJfaWQiOjIxNH0.OQm9hegrTiX6Krij369tQ-8_SYBtXsPMxpv_8GSA_zg
+      responses:
+        200:
+          description: OK.
+          body:
+            application/json:
+              type: object
+              example: !include examples/issues/confirm/post_response.json
+              properties:
+                  data:
+                    type: confirm.confirm
+
+/generate-smart-login-token:
+  description: |
+    Service in charge of obtaining a token through a service exposed by the superfinancial.
+  type: collection
+  post:
+    description: |
+      It must be possible to obtain the token so that it can be used in the other exposed services.
+    body:
+      application/json:
+        example: !include examples/generateToken/post_request.json
+        type: generateToken.generateToken
+    responses:
+      200:
+        description: OK.
+        body:
+          application/json:
+            type: object
+            example: !include examples/generateToken/post_200.json
+            properties:
+                data:
+                  type: generateToken.generateToken
+      400:
+        description: Bad Request.
+        body:
+          application/json:
+            examples:
+              functionalError:
+                value: !include examples/generateToken/post_400_functionalError.json
+                description: The request could not be completed due to backend errors.
+                displayName: JSON output example when there are backend errors.
+              signVerificationFailed:
+                value: !include examples/generateToken/post_400_signVerificationFailed.json
+                description: The request could not be completed due to an error with signature validation.
+                displayName: Example of JSON output when signing to SmartSupervision fails.
+              invalidCompanyId:
+                value: !include examples/generateToken/post_400_invalidCompanyId.json
+                description: The request could not be completed because the company is invalid.
+                displayName: JSON output example when there are company invalid.

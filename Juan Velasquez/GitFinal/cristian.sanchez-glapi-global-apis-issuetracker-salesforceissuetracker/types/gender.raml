@@ -1,0 +1,38 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  gender:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+            method: "POST"
+        type: string
+        enum: ["FEMALE", "MALE", "NOT_APPLY"]
+        (annotations.enumDescription):
+          - FEMALE: Female.
+          - MALE: Male.
+          - NOT_APPLY: N/A.
+        description: |
+          Identifier of gender.
+        required: false
+      description: 
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        (annotations.supportedIn):
+          - country: "CO"
+            method: "POST"
+        type: string
+        description: |
+          Description of gender.
+        required: false
+

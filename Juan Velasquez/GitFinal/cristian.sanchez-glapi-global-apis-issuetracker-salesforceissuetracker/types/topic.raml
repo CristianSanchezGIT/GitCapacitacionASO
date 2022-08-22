@@ -1,0 +1,76 @@
+#%RAML 1.0 Library
+uses:
+  annotations:  ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  formTopic: formTopic.raml
+  issueTopic: issueTopic.raml
+  keyword: keyword.raml
+  attachmentsTopic: attachmentsTopic.raml
+
+types:
+  topic:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+        type: string
+        description: |
+          Internal code of the topic.
+        required: false
+      description:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+        type: string
+        description: |
+           Description of the reason for the question, complaint or claim.
+        required: false
+      requireMovements:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+        type: boolean
+        description: |
+          Indicator to inform if movements are required.
+        required: false
+      keywords:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+        type: keyword.keyword[]
+        description: |
+           Keyword search engine.
+        required: false
+      issue:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: REQUIRED
+        type: issueTopic.issueTopic
+        description: |
+           Corresponds to the subject of the claim or complaint.
+        required: false
+      attachments:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+        type: attachmentsTopic.attachmentsTopic[]
+        description: |
+          Attachments that can be applied to a topic.
+        required: false
+      forms:
+        (annotations.bindingDefinition):
+          - method: GET
+            input: NONE
+            output: OPTIONAL
+        type: formTopic.formTopic[]
+        description: |
+           Surveys that depend on the product in question and that will be answered by the client or user who puts the complaint or claim.
+        required: false
+

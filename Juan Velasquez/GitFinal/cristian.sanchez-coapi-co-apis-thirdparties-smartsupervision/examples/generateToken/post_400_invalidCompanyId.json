@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "invalidCompanyId",
+      "message": "The company id does not have access credentials.",
+      "type": "Error"
+    }
+  ]
+}

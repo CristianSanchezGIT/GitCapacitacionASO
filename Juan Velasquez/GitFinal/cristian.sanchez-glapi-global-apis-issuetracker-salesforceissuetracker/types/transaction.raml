@@ -1,0 +1,89 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  localAmount: localAmount.raml
+  channel: channel.raml
+
+types:
+  transaction:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+          - method: "PATCH"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: string
+        description: |
+          Unique identifier of the transaction.
+        required: true
+      operationDate: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        (annotations.supportedIn):
+          - country: "CO"
+        type: datetime
+        description: |
+          Filters the transactions which operation date is equal to this one (ISO-8601 date format).
+        required: false
+      localAmount: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: localAmount.localAmount
+        description: |
+          Amount that is associated to the transaction on the local currency. This amount may not include any charges that the bank can carry with the operation.
+        required: false
+      channel: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        type: channel.channel
+        description: |
+          Channel where the movement associated at the product implicated in a specific case was made.
+        required: false
+      transactionNumber: 
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "OPTIONAL"
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+          - method: "PATCH"
+            input: "OPTIONAL"
+            output: "NONE"
+        type: number
+        description: |
+          Identifier of the movement related with the transaction.
+        required: false

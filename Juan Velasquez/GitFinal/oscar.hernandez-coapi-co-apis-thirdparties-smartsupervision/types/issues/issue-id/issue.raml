@@ -1,0 +1,215 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  issue:
+    type: object
+    properties:
+      companyId:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "REQUIRED"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Company's identifier to consult and access to the superfinanciera of Colombia information.
+        required: false
+      gender:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Gender id of financial consumer regarding to the gender coding.
+        required: false
+      lgbtiqCommunity:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          It means if the user comes from lgbti community the id is 1, if he doesn't come from lgbti, the id is 2.
+        required: false
+      specialCondition:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Special conditions id regarding Superfinanciera of Colombia information.
+        required: false 
+      sourceSystem:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Chanel id across to complain regarding with the coding published by the Superfinanciera of Colombia.
+        required: false 
+      productCode:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Product id that generate the complaint regarding with the coding "Products" published by the Superfinanciera of Colombia.
+        required: false 
+      reason:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Reason is that generate the complaint , regarding the coding of the general reasons or complaints published by the Superfinanciera of Colombia.
+        required: false
+      statusCode:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Current status code within the complaint or claim management process in accordance with the Coding of the status of the complaint or claim published by the Superfinanciera of Colombia.
+        required: false
+      updateDate:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: datetime
+        description: |
+          Date on which a change in the status of the complaint or claim is being generated.
+        required: false 
+      digitalProduct:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Refers to whether the product is digital, record one (1) if the product associated with the complaint or claim is digital or two (2) otherwise.
+        required: false
+      inFavorOf:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Code of the type of favorability given in the response to the complaint or claim, in accordance with the favorability code published by the Superfinanciera of Colombia.
+        required: false
+      acceptance:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Code of acceptance or not of the complaint or claim resolved or addressed by the consumer ombudsman in accordance with the acceptance code published by the Superfinanciera of Colombia.
+        required: false 
+      rectification:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Correction code given by the supervised entity to the complaint or claim, in accordance with the rectification code published by the Superfinanciera of Colombia.
+        required: false 
+      withdrawalComplaint:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Withdrawal id given by the financial consumer regarding the withdrawal coding published by the Superfinanciera of Colombia.
+        required: false
+      prorogation:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          It refers to the number of extensions requested from the financial consumer to respond to the complaint or claim.
+        required: false
+      admission:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Admission code given to the complaint or claim by the financial consumer ombudsman, in accordance with the admission code published by the Superfinanciera of Colombia.
+        required: false
+      hasFinalDocuments:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: boolean
+        description: |
+          It refers to whether information was attached for the final response given to the financial consumer's complaint or claim.
+        required: false
+      hasAnnex:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: boolean
+        description: |
+          It means if the complaint has annexes or not. Allowed values 1 = SI; 2=NO.
+        required: false
+      closeDate:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: datetime
+        description: |
+          Date on which the final response to the complaint or claim was given.
+        required: false
+      tutelageProcessesNumber:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Counter regarding if the complaint has tutelage processes.
+        required: false
+      controlEntity:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          It means the entity control id that request a management report of the complaint regarding the control entities coding published by the Superfinanciera of Colombia.
+        required: false
+      dialing:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Dialing code according to the dialing code published by the Superfinanciera of Colombia.
+        required: false
+      expressComplaint:
+        (annotations.bindingDefinition):
+          - method: "PUT"
+            input:  "OPTIONAL"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          If the complaint is express the value is 1, and by the other way is 2.
+        required: false

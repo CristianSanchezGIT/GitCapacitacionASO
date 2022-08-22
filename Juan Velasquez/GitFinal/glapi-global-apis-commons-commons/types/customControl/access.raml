@@ -1,0 +1,52 @@
+#%RAML 1.0 Library
+
+uses:
+  annotations: ../../annotations/annotationsLibrary.raml
+  customControlAttributes: ../customControlAttributes.raml
+
+types:    
+  customer:
+    type: customControlAttributes.customControlAttributes
+    discriminatorValue: CUSTOMER_ACCESS_CONTROL
+    description: |
+      Annotation to verify that it's an attribute that identifies the client.
+    properties:
+      mask?:
+        (annotations.bindingDefinition): []
+        type: string
+        description: |
+          The number of characters to trim off the head and tail of the string
+          to leave only the customer identifier. This is useful for attributes
+          that concatenate several values in a single attribute.
+        
+          For example, in the string "ADE-M371614-BBVAMM", "M371614" is the
+          customer identifier. Therefore this annotation's value should be 4-7
+          to trim 4 characters of the head of the string and 7 off its tail.
+
+  contract:
+    type: customControlAttributes.customControlAttributes
+    discriminatorValue: CONTRACT_ACCESS_CONTROL
+    description: |
+      Annotation to verify that it's a property that correspondes to a contract of the client.
+    properties:
+      mask?:
+        (annotations.bindingDefinition): []
+        type: string
+        description: |
+          The number of characters to trim off the head and tail of the string
+          to leave only the customer identifier. This is useful for attributes
+          that concatenate several values in a single attribute.
+        
+          For example, in the string "QQQ-3716140-BBVAMM", "3716140" is the
+          contract attribute. Therefore this annotation's value should be 4-7 to
+          trim 4 characters of the head of the string and 7 off its tail.        
+      contractRole?:
+        (annotations.bindingDefinition): []
+        type: string
+        enum: [SENDER, RECEIVER]
+        (annotations.enumDescription):
+          - SENDER: The contract is the source of funds for the operation.
+          - RECEIVER: The contract is the beneficiary of funds for the operation.
+        description: |
+          The role of this contract in the operation.
+

@@ -1,0 +1,10 @@
+{
+  "messages": [
+    {
+      "code": "invalidQuerySalesforce",
+      "message": "Invalid query",
+      "type": "ERROR",
+      "parameters":[]
+    }
+  ]
+}

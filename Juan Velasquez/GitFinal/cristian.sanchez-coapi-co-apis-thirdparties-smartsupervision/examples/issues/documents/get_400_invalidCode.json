@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "code": "invalidCode",
+      "message": "You must enter a valid code",
+      "type": "Error"
+    }
+  ]
+}

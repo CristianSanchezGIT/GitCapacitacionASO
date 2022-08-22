@@ -1,0 +1,18 @@
+#%RAML 1.0 Library
+uses:
+  annotations:  ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  
+types:
+  keyword:
+    type: object
+    properties:
+      value:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Corresponds to the keywords used for search.
+        required: false
+      

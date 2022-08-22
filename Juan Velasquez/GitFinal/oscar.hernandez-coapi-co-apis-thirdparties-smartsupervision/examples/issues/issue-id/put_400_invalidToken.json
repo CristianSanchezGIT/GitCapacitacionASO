@@ -1,0 +1,11 @@
+{
+    "status_code": 401, 
+    "messages": [
+        {
+            "token_class": "AccessToken", 
+            "token_type": "access", 
+            "message": "Token is invalid or expired"
+        }
+    ], 
+    "detail": "Error APIException"
+}

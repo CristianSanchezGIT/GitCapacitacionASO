@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  lastChange:
+    type: object
+    properties:
+      date:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: datetime
+        description: |
+          Last change date and time. String based on ISO-8601 date format for specifying the timestamp when the change took place.
+        required: false
+      username:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          User who performed the last change.
+        required: false

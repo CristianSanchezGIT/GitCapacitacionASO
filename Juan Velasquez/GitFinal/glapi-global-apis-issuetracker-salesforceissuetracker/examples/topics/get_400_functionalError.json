@@ -1,0 +1,10 @@
+{
+  "messages": [
+    {
+      "code": "functionalError",
+      "message": "Please provide the two necessary code",
+      "type": "ERROR",
+      "parameters":[]
+    }
+  ]
+}

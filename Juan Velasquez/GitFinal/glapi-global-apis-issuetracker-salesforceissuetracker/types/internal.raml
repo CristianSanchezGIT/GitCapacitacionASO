@@ -1,0 +1,20 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  binaryInfoDetail: binaryInfoDetail.raml
+
+types:
+  internal:
+    type: binaryInfoDetail.binaryInfoDetail
+    discriminatorValue: INTERNAL
+    description: States whether the associated file is internal.
+    properties:
+      fileId:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        type: string
+        description: |
+          Associated file identifier.
+        required: false

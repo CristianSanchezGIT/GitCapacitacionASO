@@ -1,0 +1,33 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  specialCondition:
+    type: object
+    properties:
+      id:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "REQUIRED"
+        (annotations.supportedIn):
+          - country: "CO"
+            method: "POST"
+        type: string
+        description: |
+          Special condition identifier.
+        required: false
+      description: 
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "OPTIONAL"
+        (annotations.supportedIn):
+          - country: "CO"
+            method: "POST"
+        type: string
+        description: |
+          Description of the special condition.
+        required: false
+

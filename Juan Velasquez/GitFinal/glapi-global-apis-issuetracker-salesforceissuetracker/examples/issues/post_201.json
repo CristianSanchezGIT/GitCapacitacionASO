@@ -1,0 +1,38 @@
+{
+  "data": {
+    "id": "5003E00000DBm5ZQAT",
+    "subject": "86848-ROYAL BANK OF SCOTLAND PLC",
+    "status": "ANSWERED",
+    "appUserId": "ADMIN01",
+    "financialManagementCompanyId": "20072230",
+    "description": "Incidencia a la hora de crear una transferencia.",
+    "origin": "WEB_FORM",
+    "sourceSystem": "Net Cash",
+    "priority": "MEDIUM",
+    "internalIssueId": "00015837",
+    "creationDate": "2018-05-03",
+    "resolution": "Introducir la información de la cuenta correctamente",
+    "issuer": {
+      "fullName": "John Doe García",
+      "contactDetails": [
+        {
+          "contact": "637824316",
+          "contactType": "PHONE_NUMBER",
+          "isPreferential": true
+        },
+        {
+          "contact": "JohnDoe@organization.com",
+          "contactType": "WORK_EMAIL",
+          "isPreferential": false
+        }
+      ]
+    },
+    "classification": "INCIDENCE",
+    "client": {
+      "id": "987652587",
+      "fullName": "Nombre cliente Max Mistral"
+    },
+    "closeDate": "2016-01-29T12:03:26Z",
+    "caseCreator": "Creador del caso"
+  }
+}

@@ -1,0 +1,41 @@
+#%RAML 1.0 Library
+
+uses: 
+  annotations: ../annotations/annotationsLibrary.raml
+
+types:
+  customControlService:
+    type: object
+    properties:
+      kind:
+        required: true
+        type: string
+        description: Kind of the validation.
+        (annotations.bindingDefinition): []
+        enum: [MULTISTEP, MULTIOPERATIVE, CAS_IGNORE, STAND_IN]
+        (annotations.enumDescription):
+          - MULTISTEP: It indicates if a service has an authentication process in more than one stage.
+          - MULTIOPERATIVE: It indicates if a service has more than one implementation for the same design. The implementations ar controlled by the architecture and it depends of specific factors such as the authentication level.
+          - CAS_IGNORE: It indicates that the service must not pass by CAS because there are no users or contracts to validate.
+          - STAND_IN: It indicates if the service can operate with an on-day operations and day-1 operations.
+      country:
+        required: true
+        type: string
+        description: Country specified with the ISO 3166-1 alpha-2 two letters code.
+        (annotations.bindingDefinition): []
+        enum: [ES, MX, PE, CO, US, AR, VE, UY, PY, TR, GL, ML]
+        (annotations.enumDescription):
+          - ES: Spain.
+          - MX: Mexico.
+          - PE: Peru.
+          - CO: Colombia.
+          - US: United States of America.
+          - AR: Argentina.
+          - VE: Venezuela.
+          - UY: Uruguay.
+          - PY: Paraguay.
+          - TR: Turkey.          
+          - GL: Global.
+          - ML: Multilocal
+        example: MX
+        pattern: ^[A-Z]{2}$

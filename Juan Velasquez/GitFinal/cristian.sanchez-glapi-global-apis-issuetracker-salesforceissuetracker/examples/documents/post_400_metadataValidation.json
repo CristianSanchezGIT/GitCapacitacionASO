@@ -1,0 +1,14 @@
+{
+  "messages": [
+    {
+      "code": "metadataValidation",
+      "message": "Metadata validation failed",
+      "parameters": [
+        {
+          "name": "Error in the documents details validation."
+        }
+      ],
+      "type": "FATAL"
+    }
+  ]
+}
