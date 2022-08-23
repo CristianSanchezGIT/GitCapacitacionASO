@@ -1,0 +1,31 @@
+{
+  "data": {
+    "entity": {
+      "id": "212948340u9",
+      "shortName": "DummyRobot",
+      "name": "entity of DummyRobot"
+    },
+    "parameters": [
+      {
+        "name": "Usuario",
+        "value": "1dfln293923"
+      },
+      {
+        "name": "Identificador",
+        "value": "1dfln293923"
+      }
+    ],
+    "expirationDate": "2008-09-15",
+    "fromDate": "2018-09-08",
+    "toDate": "2019-02-05",
+    "segmentationTypes": [
+      {
+        "id": "cuentas"
+      },
+      {
+        "id": "fondos"
+      }
+    ],
+    "originId": "0019-23493294"
+  }
+}

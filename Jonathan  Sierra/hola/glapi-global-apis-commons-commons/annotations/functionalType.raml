@@ -1,0 +1,14 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+
+uses:
+  annotations: annotationsLibrary.raml
+
+displayName: FunctionalType
+description:  |
+  This annotation specifies the category of an attribute, as defined by a
+  business or product team.
+
+  By itself it's of little practical use. You must use it in tandem with other
+  security annotations to control behavior during runtime.
+type: string
+allowedTargets: [TypeDeclaration]

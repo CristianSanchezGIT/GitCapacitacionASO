@@ -1,0 +1,73 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+  entity: entity.raml
+  parameters: parameters.raml
+  segmentationTypes: segmentationTypes.raml
+types:
+  json:
+    type: object
+    properties:
+      entity:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "REQUIRED"
+            output: "OPTIONAL"
+        type: entity.entity
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false
+      parameters:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: parameters.parameters[]
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false
+      expirationDate:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: date-only
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false
+      fromDate:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: date-only
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false
+      toDate:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: date-only
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false  
+      segmentationTypes:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: segmentationTypes.segmentationTypes
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false
+      originId:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          List of complaints received by the Superfinanciera of Colombia.
+        required: false

@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  parameters:
+    type: object
+    properties:
+      name:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Company's todo.
+        required: false
+      value:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input:  "NONE"
+            output: "OPTIONAL"
+        type: string
+        description: |
+          Company's todo.
+        required: false  
