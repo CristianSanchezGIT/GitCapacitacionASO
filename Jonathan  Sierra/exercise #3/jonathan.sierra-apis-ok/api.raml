@@ -1,0 +1,54 @@
+#%RAML 1.0
+title: ConsumerFinanceCollaborators
+version: v0.1.0
+description: !include docs/apiDescription.md
+baseUri: https://www.bbvaapis.com/collaborators/823746871648/business-hours/v0
+
+uses: 
+ collaborators: types/collaborators.raml
+
+resourceTypes:
+  collection: !include ../glapi-global-apis-commons-commons/resourceTypes/collection.raml
+  collection-item: !include ../glapi-global-apis-commons-commons/resourceTypes/collection-item.raml
+  consulting-post: !include ../glapi-global-apis-commons-commons/resourceTypes/consulting-post.raml
+
+
+/collaborators:
+  description: |
+    Management service of all the PQRs(Petitions, Complaints and Claims) stored in the Superfinanciera of Colombia.
+  type: collection
+
+  /{collaborator-id}:
+    description: |
+      soahduashdalshdlas
+    type: collection-item
+    uriParameters:
+      collaborator-id:
+        description: "Company's identifier to consult and access to the SuperFinanciera of Colombia information."
+        type: string
+        required: true
+        example: "0024113"
+  /business-hours:
+    description: |
+      khdsakjahd
+    type: collection-item|	
+    get:
+      description: |
+        Retrieves all the PQRs(Petitions, Complaints and Claims) stored in the Superfinanciera of Colombia.
+      headers:
+        Authorization:
+           displayName: Authorization
+           description: Temporary user access code.
+           type: string
+           required: true
+           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ5MjU2NTY1LCJqdGkiOiJiYjk4YjUxMjJmZTA0OWM5ODUxOGZlNjhkMmI0N2FiMyIsInVzZXJfaWQiOjIxNH0.OQm9hegrTiX6Krij369tQ-8_SYBtXsPMxpv_8GSA_zg
+      responses:
+        200:
+          description: OK.
+          body:
+            application/json:
+              examples:
+                simplest:
+                  value: !include examples/collaborators.json
+                  description: JSON output example for the simplest call GET /collaborators
+                  displayName: Basic view JSON output example
