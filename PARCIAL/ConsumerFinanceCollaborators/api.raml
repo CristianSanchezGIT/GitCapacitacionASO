@@ -1,0 +1,37 @@
+#%RAML 1.0
+title: ConsumerFinanceCollaborators
+version: v0.5.0
+description: !include docs/apiDescription.md
+baseUri: https://www.bbvaapis.com/collaborators/v0
+
+types:
+  errors: !include ../glapi-global-apis-commons-commons/types/errors.raml
+
+resourceTypes:
+  consulting-post: !include ../glapi-global-apis-commons-commons/resourceTypes/consulting-post.raml
+  collection: !include ../glapi-global-apis-commons-commons/resourceTypes/collection.raml
+
+uses:
+  business-hours: types/business-hours/business-hours.raml
+
+/business-hours:
+  description: The colaboratorid is used to validate the business-hours of the corresponding colaborator
+
+  get:
+    description: The colaboratorid is used to validate the business-hours of the corresponding colaborator
+    body:
+      application/json:
+        type: object
+        example: !include examples/business-hours/post_request.json
+    
+    responses:
+      200:
+        description: OK
+        body:
+          application/json:
+            type: object
+            properties:
+              data:
+                type: business-hours.business-hours
+            example: !include examples/business-hours/post_200.json
+   

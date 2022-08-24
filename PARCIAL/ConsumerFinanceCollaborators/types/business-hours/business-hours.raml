@@ -1,0 +1,45 @@
+#%RAML 1.0 Library
+uses:
+  currentDate: currentDate.raml
+  validationHour: validationHour.raml
+
+  annotations: ../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+types:
+  business-hours:
+    type: object
+    properties:
+      currentDate:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "N"
+        type: currentDate.currentDate
+        description: Object of the current date for validate.
+        required: false
+      accessValidation:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "Y"
+        type: boolean
+        description: valid if it is within the schedule.
+        required: false
+      accessPermission:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "Y"
+        type: object
+        description: validate if you have permission to access.
+        required: false
+      validationHour:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "Y"
+        type: validationHour.validationHour
+        description: parameterized schedule for validation.
+        required: false
+
+        

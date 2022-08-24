@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  
+  annotations: ../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+
+types:
+  currentDate:
+    type: Object
+    properties:
+      date:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "Y"
+        type: Date
+        description: current date.
+        required: false
+      hour:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "Y"
+        type: String
+        description: current hour.
+        required: false

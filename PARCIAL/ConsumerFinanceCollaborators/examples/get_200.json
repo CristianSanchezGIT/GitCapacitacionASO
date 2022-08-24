@@ -1,0 +1,14 @@
+{
+    "data": {
+        "currentDate ": {
+            "date": '2020-12-22',
+            "hour": '09:30:31'
+        },
+        “accessValidation”: 'true',
+        “accessPermission”: 'true',
+        "validationHour": {
+            "startTime": '06:00:00',
+            "finalTime": '21:00:00'
+        }
+    }
+}

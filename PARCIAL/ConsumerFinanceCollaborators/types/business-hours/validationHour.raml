@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+uses:
+  
+  annotations: ../../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+
+types:
+  validationHour:
+    type: Object
+    properties:
+      startTime:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "Y"
+        type: String
+        description: parameterized start hours.
+        required: false
+      finalTime:
+        (annotations.bindingDefinition):
+          - method: "GET"
+            input: "NONE"
+            output: "Y"
+        type: String
+        description: parameterized final hours.
+        required: false
