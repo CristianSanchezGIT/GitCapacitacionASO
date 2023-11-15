@@ -8,5 +8,7 @@
   "error": {
     "description": "protocolo descripcion"
   },
-  "destination": "REJECTED"
+  "destination": "REJECTED",
+  "number": "3213213232",
+  "email": "hola@prueba123es"
 }
