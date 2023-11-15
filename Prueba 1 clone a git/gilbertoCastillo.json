@@ -8,5 +8,8 @@
   "error": {
     "description": "protocolo descripcion"
   },
-  "destination": "REJECTED"
+  "destination": "REJECTED",
+  "nombre": "GILBERTO",
+  "apellido": "castillo",
+  "edad":40
 }
