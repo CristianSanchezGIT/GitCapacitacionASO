@@ -1,1 +1,12 @@
-Hola mundo
+{
+  "serviceDown": {
+    "code": "VD99",
+    "description": "razon de la caida",
+    "sourceName": "nombre servicio"
+  },
+  "httpCode": "1",
+  "error": {
+    "description": "protocolo descripcion"
+  },
+  "destination": "REJECTED"
+}
