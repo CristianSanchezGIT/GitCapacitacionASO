@@ -1,0 +1,18 @@
+{
+  "serviceDown": {
+    "code": "VD99",
+    "description": "razon de la caida",
+    "sourceName": "nombre servicio"
+  },
+  "httpCode": "1",
+  "error": {
+    "description": "protocolo descripcion"
+  },
+  "destination": "REJECTED",
+  "nombre": "GILBERTO",
+  "apellido": "castillo",
+  "edad":40,
+  "number": "3213213232",
+  "adress": "calle falsa",
+  "email": "hola@prueba123es"
+}
